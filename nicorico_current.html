@@ -1,0 +1,2550 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>親子教室 nicorico</title>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --pink-pale:  #FAF6EE;
+  --pink-light: #EFE6D4;
+  --pink:       #C8A882;
+  --pink-mid:   #A08060;
+  --pink-dark:  #7A5C40;
+  --beige:      #FBF8F2;
+  --cream:      #FEFCF8;
+  --brown:      #3E2C1E;
+  --brown-mid:  #6B5040;
+  --brown-lt:   #9A8070;
+  --white:      #FFFFFF;
+  --line-green: #06C755;
+  --sage:       #BFD0CC;
+}
+body {
+  font-family: 'Zen Maru Gothic', sans-serif;
+  color: var(--brown);
+  background: var(--white);
+  font-size: 15px;
+  line-height: 1.9;
+}
+
+/* ── 画像プレースホルダー ── */
+.ph {
+  background: linear-gradient(135deg, #F0E8D8 0%, #E8DFCC 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #B0906A;
+  font-size: 11px;
+  text-align: center;
+  padding: 12px;
+  gap: 6px;
+  border-radius: 0;
+}
+.ph svg { opacity: 0.45; }
+.ph-label { font-size: 10px; opacity: 0.65; word-break: break-all; max-width: 160px; }
+
+/* ── 実画像 ── */
+.ri      { width: 100%; height: 100%; object-fit: cover;   display: block; }
+.ri-c    { width: 100%; height: 100%; object-fit: contain; display: block; background: var(--pink-pale); padding: 8px; }
+
+/* ── HEADER ── */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--pink-pale);
+  border-bottom: 1px solid var(--pink-light);
+  padding: 0 32px;
+}
+.hdr {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+  gap: 16px;
+}
+.logo {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--pink-dark);
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  flex-shrink: 0;
+}
+/* ── ロゴエリア（クマ付き） ── */
+.logo-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+.logo-bear { width: 42px; height: 42px; flex-shrink: 0; }
+.logo-text  { display: flex; flex-direction: column; line-height: 1.15; }
+.logo-sub   { font-size: 9px; font-weight: 500; color: var(--brown-lt); letter-spacing: 0.12em; }
+.logo-name  { font-size: 19px; font-weight: 700; color: var(--pink-dark); letter-spacing: 0.04em; }
+/* ── 予約ボタン（ヘッダー右） ── */
+.btn-schedule {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--sage);
+  color: var(--brown);
+  border-radius: 22px;
+  padding: 8px 16px;
+  font-size: 12px;
+  font-weight: 700;
+  font-family: inherit;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: opacity 0.2s;
+  flex-shrink: 0;
+}
+.btn-schedule:hover { opacity: 0.82; }
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 2px;
+}
+nav ul li a {
+  display: block;
+  padding: 6px 11px;
+  font-size: 13px;
+  color: var(--brown-mid);
+  text-decoration: none;
+  font-weight: 500;
+  border-radius: 6px;
+  white-space: nowrap;
+  transition: color 0.2s, background 0.2s;
+}
+nav ul li a:hover { color: var(--pink-dark); background: var(--pink-pale); }
+.hdr-sns {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+.btn-line-sm {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: var(--line-green);
+  color: white;
+  border-radius: 18px;
+  padding: 6px 14px;
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: opacity 0.2s;
+  white-space: nowrap;
+}
+.btn-line-sm:hover { opacity: 0.85; }
+.ig-icon {
+  width: 26px; height: 26px;
+  color: var(--brown-lt);
+  transition: color 0.2s;
+  cursor: pointer;
+}
+.ig-icon:hover { color: var(--pink-dark); }
+
+/* ── HERO ── */
+.hero {
+  position: relative;
+  min-height: 580px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute;
+  inset: 0;
+}
+.hero-bg .ph {
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
+  font-size: 13px;
+  background: linear-gradient(160deg, #FCE8F3 0%, #FFF3E8 55%, #E8F5F0 100%);
+}
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(255,255,255,0.52);
+}
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 80px 24px;
+  max-width: 740px;
+}
+.hero-dec {
+  font-size: 15px;
+  color: var(--pink-dark);
+  font-weight: 500;
+  margin-bottom: 18px;
+  letter-spacing: 0.12em;
+}
+.hero-h1 {
+  font-size: clamp(20px, 3.5vw, 32px);
+  font-weight: 700;
+  line-height: 1.8;
+  color: var(--brown);
+  margin-bottom: 28px;
+}
+.hero-h1 .sub {
+  font-size: clamp(15px, 2.2vw, 20px);
+  font-weight: 400;
+  color: var(--brown-mid);
+}
+.hero-btns {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.btn-reserve {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--pink-dark);
+  color: white;
+  border-radius: 30px;
+  padding: 13px 28px;
+  font-size: 14px;
+  font-weight: 700;
+  font-family: inherit;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(217,91,154,0.35);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.btn-reserve:hover { transform: translateY(-2px); box-shadow: 0 8px 22px rgba(217,91,154,0.4); }
+.btn-line-hero {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--line-green);
+  color: white;
+  border-radius: 30px;
+  padding: 13px 24px;
+  font-size: 14px;
+  font-weight: 700;
+  font-family: inherit;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(6,199,85,0.3);
+  transition: transform 0.2s;
+}
+.btn-line-hero:hover { transform: translateY(-2px); }
+
+/* ── セクション共通 ── */
+.sec { padding: 72px 24px; }
+.sec-bg-beige { background: var(--beige); }
+.sec-bg-pink  { background: var(--pink-pale); }
+.sec-bg-white { background: var(--white); }
+.inner    { max-width: 960px;  margin: 0 auto; }
+.inner-sm { max-width: 720px;  margin: 0 auto; }
+.inner-lg { max-width: 1060px; margin: 0 auto; }
+
+.badge {
+  display: inline-block;
+  background: var(--pink-light);
+  color: var(--pink-dark);
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 16px;
+  border-radius: 20px;
+  letter-spacing: 0.07em;
+}
+.sec-title {
+  font-size: clamp(20px, 2.8vw, 26px);
+  font-weight: 700;
+  text-align: center;
+  color: var(--brown);
+  margin-top: 10px;
+  margin-bottom: 6px;
+}
+.sec-rule {
+  width: 44px; height: 3px;
+  background: var(--pink);
+  border-radius: 3px;
+  margin: 10px auto 36px;
+}
+.sec-center { text-align: center; }
+
+/* ── 私の想い（センタリング版） ── */
+.omoi-centered {
+  max-width: 680px;
+  margin: 0 auto;
+  text-align: center;
+}
+.omoi-circle-photo {
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto 36px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+/* 旧グリッド（後方互換） */
+.omoi-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 52px;
+  align-items: start;
+}
+.omoi-lead {
+  font-size: clamp(17px, 2.2vw, 21px);
+  font-weight: 700;
+  color: var(--pink-dark);
+  line-height: 1.85;
+  margin-bottom: 22px;
+}
+.omoi-body {
+  font-size: 14px;
+  line-height: 2.1;
+  color: var(--brown-mid);
+}
+.omoi-body p { margin-bottom: 14px; }
+.omoi-img { height: 460px; border-radius: 12px; overflow: hidden; }
+
+/* ── メリット（オルタネート・サークル版） ── */
+.merit-alt-list { display: flex; flex-direction: column; gap: 60px; }
+.merit-alt-row  { display: flex; align-items: center; gap: 56px; }
+.merit-alt-row.rev { flex-direction: row-reverse; }
+.merit-circle-wrap {
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+.merit-circle-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.merit-alt-text { flex: 1; }
+.merit-alt-num {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--pink);
+  letter-spacing: 0.1em;
+  margin-bottom: 10px;
+}
+.merit-alt-text h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--brown);
+  line-height: 1.75;
+  margin-bottom: 14px;
+}
+.merit-alt-text p { font-size: 14px; color: var(--brown-mid); line-height: 2; }
+.merit-beige-box {
+  flex: 1;
+  background: var(--pink-pale);
+  border-radius: 20px;
+  padding: 36px 40px;
+}
+.merit-beige-box .merit-alt-num { color: var(--pink-mid); }
+.merit-beige-box h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--brown);
+  line-height: 1.75;
+  margin-bottom: 14px;
+}
+.merit-beige-box p { font-size: 14px; color: var(--brown-mid); line-height: 2; }
+/* 旧グリッド（後方互換） */
+.merit-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px 32px;
+}
+.merit-card { display: flex; flex-direction: column; gap: 14px; }
+.merit-img  { height: 220px; border-radius: 12px; overflow: hidden; }
+.merit-card h3 { font-size: 16px; font-weight: 700; color: var(--brown); line-height: 1.7; }
+.merit-card p  { font-size: 13px; color: var(--brown-mid); line-height: 1.9; }
+
+/* ── コース紹介 ── */
+.course-intro {
+  font-size: 14px;
+  color: var(--brown-mid);
+  text-align: center;
+  margin-bottom: 44px;
+  line-height: 1.9;
+}
+.course-list { display: flex; flex-direction: column; gap: 40px; }
+.course-card {
+  background: var(--white);
+  border-radius: 18px;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  box-shadow: 0 2px 18px rgba(0,0,0,0.06);
+}
+.course-card.rev { grid-template-columns: 1fr 360px; }
+.course-card.rev .c-img { order: 2; }
+.course-card.rev .c-body { order: 1; }
+.c-img { min-height: 280px; }
+.c-body {
+  padding: 36px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+}
+.c-age {
+  display: inline-block;
+  font-size: 12px;
+  color: var(--pink-dark);
+  font-weight: 700;
+  background: var(--pink-pale);
+  padding: 3px 12px;
+  border-radius: 14px;
+  align-self: flex-start;
+}
+.c-name {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--brown);
+}
+.c-desc {
+  font-size: 13px;
+  line-height: 2;
+  color: var(--brown-mid);
+  white-space: pre-line;
+  flex: 1;
+}
+.btn-detail {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 2px solid var(--pink-dark);
+  color: var(--pink-dark);
+  border-radius: 22px;
+  padding: 9px 22px;
+  font-size: 13px;
+  font-weight: 700;
+  font-family: inherit;
+  background: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+  align-self: flex-start;
+}
+.btn-detail:hover { background: var(--pink-dark); color: white; }
+
+/* ── コース紹介（2サービス版） ── */
+.course-2col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+}
+.course-col {
+  background: var(--white);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: default;
+}
+.course-col:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 28px rgba(0,0,0,0.12);
+}
+.course-col-img { height: 260px; overflow: hidden; flex-shrink: 0; }
+.course-col-body {
+  padding: 26px 26px 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1;
+}
+.c-name-sub { font-size: 14px; font-weight: 500; color: var(--brown-lt); }
+.c-new-badge {
+  display: inline-block;
+  background: var(--pink-dark);
+  color: white;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 12px;
+  border-radius: 12px;
+  letter-spacing: 0.06em;
+  align-self: flex-start;
+}
+
+/* ── コース紹介（大型ビジュアルカード） ── */
+.course-bigcards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+.course-bigcard {
+  border-radius: 22px;
+  overflow: hidden;
+  position: relative;
+  min-height: 420px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  cursor: pointer;
+  transition: transform 0.25s, box-shadow 0.25s;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.13);
+}
+.course-bigcard:hover { transform: translateY(-5px); box-shadow: 0 14px 40px rgba(0,0,0,0.2); }
+.course-bigcard-img { position: absolute; inset: 0; }
+.course-bigcard-img img { width: 100%; height: 100%; object-fit: cover; }
+.course-bigcard-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(42,28,14,0.92) 0%, rgba(42,28,14,0.52) 50%, rgba(42,28,14,0.08) 100%);
+}
+.course-bigcard-body {
+  position: relative; z-index: 1;
+  padding: 0 30px 36px;
+  color: white;
+  display: flex; flex-direction: column; gap: 10px;
+}
+.cbc-badges { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin-bottom: 2px; }
+.cbc-age {
+  display: inline-block;
+  background: rgba(255,255,255,0.18);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255,255,255,0.45);
+  color: white; font-size: 11px; font-weight: 700;
+  padding: 3px 13px; border-radius: 12px; letter-spacing: 0.04em;
+}
+.cbc-new {
+  display: inline-block; background: var(--pink-dark); color: white;
+  font-size: 11px; font-weight: 700; padding: 3px 13px; border-radius: 12px; letter-spacing: 0.08em;
+}
+.cbc-name { font-size: 26px; font-weight: 700; color: white; line-height: 1.25; }
+.cbc-name-sub { font-size: 14px; font-weight: 500; color: rgba(255,255,255,0.72); display: block; margin-top: 3px; }
+.cbc-desc { font-size: 13px; color: rgba(255,255,255,0.85); line-height: 1.85; }
+.btn-detail-w {
+  display: inline-flex; align-items: center; gap: 8px;
+  border: 2px solid rgba(255,255,255,0.6); color: white;
+  border-radius: 22px; padding: 10px 24px;
+  font-size: 13px; font-weight: 700; font-family: inherit;
+  background: rgba(255,255,255,0.08);
+  cursor: pointer; text-decoration: none;
+  transition: background 0.2s, border-color 0.2s;
+  align-self: flex-start; backdrop-filter: blur(4px); margin-top: 4px;
+}
+.btn-detail-w:hover { background: rgba(255,255,255,0.22); border-color: white; }
+
+/* ── ホームエンドCTA ── */
+.home-end-sec {
+  background: var(--pink-pale);
+  padding: 64px 24px;
+  text-align: center;
+  border-top: 2px dashed var(--pink-light);
+}
+.home-end-title { font-size: 18px; font-weight: 700; color: var(--brown); margin-bottom: 8px; }
+.home-end-lead { font-size: 13px; color: var(--brown-mid); line-height: 1.9; margin-bottom: 36px; }
+.home-end-btns {
+  display: flex; flex-direction: column; gap: 14px;
+  max-width: 340px; margin: 0 auto;
+}
+.btn-hec {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 18px 22px 18px 28px; border-radius: 50px;
+  font-size: 15px; font-weight: 700; font-family: inherit;
+  text-decoration: none; cursor: pointer;
+  transition: opacity 0.2s, transform 0.15s;
+}
+.btn-hec:hover { opacity: 0.85; transform: translateY(-1px); }
+.btn-hec-mecha { background: var(--sage); color: var(--brown); }
+.btn-hec-sitter { background: var(--pink-light); color: var(--brown); border: 2px solid var(--pink); }
+.btn-hec-line { background: var(--line-green); color: white; }
+.btn-hec-arrow {
+  width: 30px; height: 30px; background: rgba(255,255,255,0.3);
+  border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+
+/* ── サブページ区切り ── */
+.subpage-marker {
+  background: var(--brown); padding: 18px 24px;
+  display: flex; align-items: center; justify-content: center; gap: 16px;
+}
+.subpage-marker-line { flex: 1; height: 1px; background: rgba(255,255,255,0.2); max-width: 80px; }
+.subpage-marker-label { color: var(--pink-light); font-size: 12px; font-weight: 700; letter-spacing: 0.12em; white-space: nowrap; }
+
+/* ── ギャラリー（サークルカルーセル） ── */
+.gallery-carousel-outer {
+  position: relative;
+  padding: 0 52px;
+}
+.gallery-carousel-track {
+  display: flex;
+  gap: 24px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding: 12px 4px 20px;
+}
+.gallery-carousel-track::-webkit-scrollbar { display: none; }
+.gallery-circle {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+  scroll-snap-align: start;
+  box-shadow: 0 3px 14px rgba(0,0,0,0.1);
+  transition: transform 0.2s;
+}
+.gallery-circle:hover { transform: scale(1.05); cursor: default; }
+.gallery-circle img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-60%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--white);
+  border: 2px solid var(--pink-light);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--brown-mid);
+  font-family: inherit;
+  transition: background 0.2s, border-color 0.2s;
+  z-index: 2;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  padding: 0;
+}
+.carousel-btn:hover { background: var(--pink-pale); border-color: var(--pink); }
+.carousel-btn.prev { left: 4px; }
+.carousel-btn.next { right: 4px; }
+/* 旧グリッド（後方互換） */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+.g-item { height: 210px; border-radius: 10px; overflow: hidden; }
+.btn-more {
+  display: block;
+  width: fit-content;
+  margin: 24px auto 0;
+  border: 2px solid var(--pink-dark);
+  color: var(--pink-dark);
+  border-radius: 22px;
+  padding: 9px 30px;
+  font-size: 13px;
+  font-weight: 700;
+  font-family: inherit;
+  background: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+}
+.btn-more:hover { background: var(--pink-dark); color: white; }
+
+/* ── ママの声（横型カード） ── */
+.voice-list-v { display: flex; flex-direction: column; gap: 20px; }
+.voice-card-h {
+  background: var(--pink-pale);
+  border-radius: 20px;
+  padding: 28px 32px;
+  display: flex;
+  align-items: flex-start;
+  gap: 28px;
+}
+.voice-avatar-wrap {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: var(--pink-light);
+}
+.voice-avatar-wrap svg { width: 100%; height: 100%; display: block; }
+.voice-body  { flex: 1; }
+.v-text-h   { font-size: 14px; line-height: 2; color: var(--brown); margin-bottom: 10px; }
+.v-author-h { font-size: 12px; color: var(--pink-dark); font-weight: 700; }
+/* 旧グリッド（後方互換） */
+.voice-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+.voice-card  { background: var(--pink-pale); border-radius: 16px; padding: 26px 22px; }
+.v-photo     { height: 130px; border-radius: 10px; overflow: hidden; margin-bottom: 14px; }
+.v-text      { font-size: 13px; line-height: 1.95; color: var(--brown); }
+.v-author    { font-size: 12px; color: var(--pink-dark); font-weight: 700; margin-top: 10px; }
+
+/* ── FAQ ── */
+.faq-list { display: flex; flex-direction: column; gap: 10px; }
+.faq-item {
+  background: var(--white);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 1px 8px rgba(0,0,0,0.05);
+}
+.faq-q {
+  width: 100%;
+  text-align: left;
+  padding: 18px 22px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--brown);
+  font-family: inherit;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  transition: background 0.2s;
+  line-height: 1.6;
+}
+.faq-q:hover { background: var(--pink-pale); }
+.faq-icon {
+  width: 20px; height: 20px;
+  color: var(--pink-dark);
+  flex-shrink: 0;
+  transition: transform 0.3s;
+}
+.faq-item.open .faq-icon { transform: rotate(180deg); }
+.faq-a {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease;
+}
+.faq-item.open .faq-a { max-height: 400px; }
+.faq-a-inner {
+  padding: 0 22px 18px;
+  font-size: 13px;
+  color: var(--brown-mid);
+  line-height: 1.9;
+}
+
+/* ── 講師プロフィール ── */
+.profile-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+.profile-imgs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.p-img-main { height: 300px; border-radius: 12px; overflow: hidden; grid-column: 1 / -1; }
+.p-img-sub  { height: 150px; border-radius: 10px; overflow: hidden; }
+.p-name { font-size: 22px; font-weight: 700; color: var(--brown); margin-bottom: 12px; }
+.p-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 18px;
+}
+.p-tag {
+  font-size: 11px;
+  background: var(--pink-light);
+  color: var(--pink-dark);
+  padding: 3px 12px;
+  border-radius: 14px;
+  font-weight: 700;
+}
+.p-bio { font-size: 13px; line-height: 2; color: var(--brown-mid); white-space: pre-line; }
+
+/* ── アクセス ── */
+.access-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+.access-card {
+  background: var(--white);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+.a-map { height: 170px; }
+.a-body { padding: 18px 18px 22px; }
+.a-name { font-size: 15px; font-weight: 700; color: var(--brown); margin-bottom: 8px; }
+.a-addr { font-size: 12px; color: var(--brown-mid); line-height: 1.8; margin-bottom: 6px; }
+.a-note { font-size: 12px; color: var(--brown-lt);  line-height: 1.8; margin-bottom: 14px; }
+.btn-map {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  border: 1.5px solid var(--pink-dark);
+  color: var(--pink-dark);
+  border-radius: 18px;
+  padding: 6px 16px;
+  font-size: 12px;
+  font-weight: 700;
+  font-family: inherit;
+  background: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+}
+.btn-map:hover { background: var(--pink-dark); color: white; }
+
+/* ── おうちほいく ── */
+.ohc-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+  max-width: 960px;
+  margin: 0 auto;
+}
+.ohc-new {
+  display: inline-block;
+  background: var(--pink-dark);
+  color: white;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 16px;
+  border-radius: 14px;
+  margin-bottom: 14px;
+  letter-spacing: 0.06em;
+}
+.ohc-title {
+  font-size: clamp(18px, 2.5vw, 24px);
+  font-weight: 700;
+  color: var(--brown);
+  line-height: 1.7;
+  margin-bottom: 18px;
+}
+.ohc-text { font-size: 14px; line-height: 2.1; color: var(--brown-mid); white-space: pre-line; margin-bottom: 22px; }
+.ohc-img { height: 400px; border-radius: 12px; overflow: hidden; }
+
+/* ── LINE CTA ── */
+.cta-sec {
+  background: linear-gradient(135deg, var(--pink-dark) 0%, #5C3E28 100%);
+  padding: 72px 24px;
+  text-align: center;
+  color: white;
+}
+.cta-sec h2 {
+  font-size: clamp(18px, 2.8vw, 24px);
+  font-weight: 700;
+  margin-bottom: 10px;
+  line-height: 1.7;
+}
+.cta-sec p { font-size: 14px; opacity: 0.9; margin-bottom: 30px; line-height: 1.9; }
+.cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+.btn-line-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: white;
+  color: var(--pink-dark);
+  border-radius: 30px;
+  padding: 15px 34px;
+  font-size: 15px;
+  font-weight: 700;
+  font-family: inherit;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.15);
+  transition: transform 0.2s;
+}
+.btn-line-cta:hover { transform: translateY(-2px); }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--brown);
+  color: rgba(255,255,255,0.65);
+  padding: 48px 24px 32px;
+  text-align: center;
+}
+.f-logo { display: block; font-size: 18px; font-weight: 700; color: white; margin-bottom: 20px; }
+.f-nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 4px 14px;
+  list-style: none;
+  margin-bottom: 16px;
+}
+.f-nav a { font-size: 12px; color: rgba(255,255,255,0.65); text-decoration: none; }
+.f-nav a:hover { color: white; }
+.f-sns { display: flex; justify-content: center; gap: 16px; margin-bottom: 16px; }
+.f-sns a { font-size: 12px; color: rgba(255,255,255,0.65); text-decoration: none; font-weight: 700; }
+.f-sns a:hover { color: white; }
+.f-legal { display: flex; justify-content: center; gap: 14px; margin-bottom: 20px; flex-wrap: wrap; }
+.f-legal a { font-size: 11px; color: rgba(255,255,255,0.45); text-decoration: none; }
+.f-copy { font-size: 11px; color: rgba(255,255,255,0.35); }
+
+/* ── ベビーシッターセクション ── */
+.sitter-hero-sec {
+  background: var(--pink-pale);
+  padding: 72px 24px 56px;
+}
+.sitter-hero-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+.sitter-hero-text h2 {
+  font-size: clamp(18px, 2.6vw, 26px);
+  font-weight: 700;
+  line-height: 1.8;
+  color: var(--brown);
+  margin-bottom: 24px;
+}
+.sitter-hero-imgs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.sitter-img-round {
+  border-radius: 50%;
+  overflow: hidden;
+  aspect-ratio: 1;
+}
+.sitter-intro-sec {
+  background: var(--white);
+  padding: 72px 24px;
+  text-align: center;
+}
+.sitter-intro-lead {
+  font-size: clamp(18px, 2.4vw, 22px);
+  font-weight: 700;
+  color: var(--brown);
+  line-height: 1.8;
+  margin-bottom: 28px;
+}
+.sitter-intro-body {
+  font-size: 14px;
+  color: var(--brown-mid);
+  line-height: 2.1;
+  max-width: 640px;
+  margin: 0 auto 28px;
+}
+.sitter-wish-box {
+  background: var(--pink-pale);
+  border-radius: 16px;
+  padding: 28px 32px;
+  max-width: 580px;
+  margin: 0 auto 28px;
+  text-align: left;
+}
+.sitter-wish-box p {
+  font-size: 14px;
+  color: var(--brown);
+  line-height: 2.0;
+}
+.sitter-from {
+  font-size: 14px;
+  color: var(--brown-mid);
+  line-height: 2.1;
+  max-width: 640px;
+  margin: 0 auto;
+}
+.support-sec { background: var(--beige); padding: 72px 24px; }
+.support-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px 24px;
+  margin-top: 8px;
+}
+.support-card { text-align: center; }
+.support-img-wrap {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto 16px;
+  background: var(--pink-light);
+}
+.support-name {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--brown);
+  margin-bottom: 8px;
+}
+.support-desc {
+  font-size: 12px;
+  color: var(--brown-mid);
+  line-height: 1.9;
+}
+.btn-sage {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--sage);
+  color: var(--brown);
+  border-radius: 30px;
+  padding: 12px 32px;
+  font-size: 14px;
+  font-weight: 700;
+  font-family: inherit;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.btn-sage:hover { opacity: 0.82; }
+.point-sec { background: var(--white); padding: 72px 24px; }
+.point-list { display: flex; flex-direction: column; gap: 36px; max-width: 720px; margin: 0 auto; }
+.point-item {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 20px;
+  align-items: center;
+  background: var(--pink-pale);
+  border-radius: 16px;
+  padding: 28px 32px;
+}
+.point-badge-wrap { text-align: center; }
+.point-badge {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--pink-dark);
+  letter-spacing: 0.1em;
+  margin-bottom: 4px;
+}
+.point-badge-num {
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--pink-dark);
+  line-height: 1;
+}
+.point-body h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--brown);
+  margin-bottom: 8px;
+  line-height: 1.6;
+}
+.point-body p { font-size: 13px; color: var(--brown-mid); line-height: 1.9; }
+
+@media (max-width: 768px) {
+  .sitter-hero-inner { grid-template-columns: 1fr; }
+  .support-grid { grid-template-columns: repeat(2, 1fr); gap: 24px 16px; }
+  .point-item { grid-template-columns: 1fr; }
+  .point-badge-wrap { text-align: left; display: flex; gap: 8px; align-items: center; }
+}
+
+/* ── ハンバーガーメニュー ── */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 6px;
+  background: none;
+  border: none;
+}
+.hamburger span {
+  width: 22px;
+  height: 2px;
+  background: var(--brown-mid);
+  border-radius: 2px;
+  display: block;
+  transition: all 0.25s;
+}
+.mob-nav {
+  display: none;
+  position: fixed;
+  top: 60px;
+  left: 0; right: 0;
+  background: var(--white);
+  z-index: 98;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+  border-top: 1px solid var(--pink-light);
+}
+.mob-nav ul {
+  list-style: none;
+  padding: 8px 0;
+}
+.mob-nav ul li a {
+  display: block;
+  padding: 15px 24px;
+  font-size: 15px;
+  color: var(--brown-mid);
+  text-decoration: none;
+  font-weight: 500;
+  border-bottom: 1px solid var(--pink-pale);
+}
+.mob-nav ul li a:hover { color: var(--pink-dark); background: var(--pink-pale); }
+.mob-nav.open { display: block; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .hamburger { display: flex; }
+  nav { display: none; }
+  header { padding: 0 16px; }
+  .btn-schedule { display: none; }
+  .omoi-grid,
+  .profile-grid,
+  .ohc-grid { grid-template-columns: 1fr; }
+  .omoi-circle-photo { width: 200px; height: 200px; }
+  .omoi-img { height: 260px; }
+  .p-img-main { height: 240px; }
+  /* Merit alternating */
+  .merit-alt-row,
+  .merit-alt-row.rev { flex-direction: column; gap: 24px; }
+  .merit-circle-wrap { width: 200px; height: 200px; }
+  .merit-beige-box { padding: 24px 22px; }
+  /* 旧グリッド */
+  .merit-grid { grid-template-columns: 1fr; }
+  .merit-img  { height: 200px; }
+  .course-card,
+  .course-card.rev { grid-template-columns: 1fr; }
+  .course-card.rev .c-img,
+  .course-card.rev .c-body { order: unset; }
+  .c-img { min-height: 200px; }
+  .course-2col { grid-template-columns: 1fr; }
+  .course-col-img { height: 200px; }
+  .course-bigcards { grid-template-columns: 1fr; }
+  .course-bigcard { min-height: 340px; }
+  .cbc-name { font-size: 22px; }
+  /* Gallery carousel */
+  .gallery-carousel-outer { padding: 0 40px; }
+  .gallery-circle { width: 155px; height: 155px; }
+  /* ママの声 */
+  .voice-card-h { padding: 20px; gap: 16px; flex-direction: column; align-items: center; text-align: center; }
+  .voice-avatar-wrap { width: 70px; height: 70px; }
+  /* 旧グリッド */
+  .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+  .g-item { height: 160px; }
+  .voice-grid  { grid-template-columns: 1fr; }
+  .access-grid { grid-template-columns: 1fr; }
+}
+
+/* ══════════════ めちゃくちゃあそびセクション ══════════════ */
+
+/* ヒーロー：水彩風背景＋左右サークル写真 */
+.mecha-hero-sec {
+  background-color: var(--cream);
+  background-image:
+    radial-gradient(ellipse 340px 220px at 10% 45%, rgba(255,180,150,0.38) 0%, transparent 70%),
+    radial-gradient(ellipse 300px 220px at 90% 30%, rgba(180,210,245,0.38) 0%, transparent 70%),
+    radial-gradient(ellipse 260px 200px at 50% 90%, rgba(190,230,195,0.35) 0%, transparent 70%),
+    radial-gradient(ellipse 220px 180px at 75% 70%, rgba(255,235,150,0.32) 0%, transparent 70%),
+    radial-gradient(ellipse 200px 160px at 25% 75%, rgba(255,200,210,0.3) 0%, transparent 70%);
+  padding: 80px 24px;
+  overflow: hidden;
+}
+.mecha-hero-inner {
+  max-width: 1060px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 260px 1fr 260px;
+  gap: 20px;
+  align-items: center;
+  min-height: 460px;
+}
+.mecha-side { display: flex; flex-direction: column; gap: 22px; }
+.mecha-side-right { align-items: flex-end; }
+.mecha-circle { border-radius: 50%; overflow: hidden; flex-shrink: 0; box-shadow: 0 4px 18px rgba(0,0,0,0.12); }
+.mecha-circle.lg { width: 220px; height: 220px; }
+.mecha-circle.sm { width: 150px; height: 150px; }
+.mecha-circle img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.mecha-center { text-align: center; padding: 0 8px; }
+.mecha-title {
+  font-size: clamp(22px, 3vw, 34px);
+  font-weight: 700;
+  color: var(--brown);
+  margin-bottom: 6px;
+  line-height: 1.5;
+}
+.mecha-sub {
+  font-size: 16px;
+  color: var(--brown-mid);
+  margin-bottom: 18px;
+}
+.mecha-dotline {
+  border: none;
+  border-top: 2px dotted var(--sage);
+  width: 160px;
+  margin: 0 auto 26px;
+}
+.mecha-desc {
+  font-size: 14px;
+  line-height: 2.2;
+  color: var(--brown-mid);
+  margin-bottom: 32px;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* 大切にしていること */
+.mecha-taisetsu-sec { background: var(--beige); padding: 72px 24px; }
+.mecha-white-card {
+  background: white;
+  border-radius: 22px;
+  padding: 44px 52px;
+  max-width: 760px;
+  margin: 0 auto;
+  box-shadow: 0 2px 18px rgba(0,0,0,0.05);
+}
+.mecha-card-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--brown);
+  text-align: center;
+  margin-bottom: 14px;
+}
+.mecha-check-list { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+.mecha-check-list li {
+  font-size: 15px;
+  color: var(--brown);
+  line-height: 1.8;
+  padding-left: 22px;
+  position: relative;
+}
+.mecha-check-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.52em;
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: var(--sage);
+}
+
+/* 当日の流れ */
+.mecha-flow-sec {
+  background-color: var(--cream);
+  background-image:
+    radial-gradient(ellipse 320px 200px at 0% 60%, rgba(255,180,150,0.22) 0%, transparent 70%),
+    radial-gradient(ellipse 280px 200px at 100% 40%, rgba(180,210,245,0.22) 0%, transparent 70%);
+  padding: 72px 24px;
+}
+.mecha-flow-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+.mecha-step {
+  background: white;
+  border-radius: 16px;
+  padding: 22px 16px 26px;
+  text-align: center;
+  box-shadow: 0 2px 14px rgba(0,0,0,0.06);
+}
+.mecha-step-num {
+  width: 52px; height: 52px;
+  border-radius: 50%;
+  background: var(--sage);
+  color: white;
+  font-size: 16px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 14px;
+}
+.mecha-step-label {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--brown);
+  margin-bottom: 12px;
+  line-height: 1.6;
+}
+.mecha-step-img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+.mecha-step-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.mecha-step-desc { font-size: 12px; color: var(--brown-mid); line-height: 1.9; text-align: left; }
+
+/* 持ち物・参加費 */
+.mecha-fee-sec { background: var(--beige); padding: 72px 24px; }
+.mecha-fee-block { margin-bottom: 26px; }
+.mecha-fee-block:last-child { margin-bottom: 0; }
+.mecha-fee-label { font-size: 15px; font-weight: 700; color: var(--brown); margin-bottom: 10px; }
+.mecha-fee-list { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+.mecha-fee-list li {
+  font-size: 14px; color: var(--brown-mid); line-height: 1.8;
+  padding-left: 16px; position: relative;
+}
+.mecha-fee-list li::before { content: '・'; position: absolute; left: 0; color: var(--brown-lt); }
+.mecha-fee-price { font-size: 20px; font-weight: 700; color: var(--brown); margin-bottom: 10px; }
+.mecha-fee-note { font-size: 13px; color: var(--brown-mid); line-height: 2.1; }
+
+/* お客様の声（パステルドット背景） */
+.mecha-voice-sec {
+  background-color: #FFFEF8;
+  background-image:
+    radial-gradient(circle, rgba(255,179,193,0.9) 9px, transparent 9px),
+    radial-gradient(circle, rgba(255,224,138,0.9) 7px, transparent 7px),
+    radial-gradient(circle, rgba(168,216,234,0.9) 8px, transparent 8px),
+    radial-gradient(circle, rgba(255,179,193,0.7) 6px, transparent 6px),
+    radial-gradient(circle, rgba(255,224,138,0.7) 9px, transparent 9px),
+    radial-gradient(circle, rgba(168,216,234,0.7) 6px, transparent 6px),
+    radial-gradient(circle, rgba(200,230,190,0.7) 7px, transparent 7px);
+  background-size: 220px 220px, 280px 280px, 200px 200px, 320px 320px, 250px 250px, 180px 180px, 240px 240px;
+  background-position: 30px 40px, 130px 20px, 70px 150px, 200px 60px, 10px 200px, 160px 170px, 90px 80px;
+  padding: 72px 24px;
+}
+.mecha-voice-card {
+  background: rgba(255,252,242,0.92);
+  border-radius: 22px;
+  padding: 26px 30px;
+  display: flex;
+  align-items: flex-start;
+  gap: 22px;
+  max-width: 700px;
+  margin: 0 auto 18px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+.mecha-avatar {
+  width: 68px; height: 68px;
+  border-radius: 50%;
+  background: #FFF5EE;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+.mecha-avatar svg { width: 100%; height: 100%; display: block; }
+.mecha-v-body { flex: 1; }
+.mecha-v-text { font-size: 14px; color: var(--brown); line-height: 2; margin-bottom: 8px; }
+.mecha-v-from { font-size: 12px; color: var(--brown-lt); }
+
+/* めちゃくちゃあそびFAQ（開放型・Q/Aバッジ） */
+.mecha-faq-sec { background: var(--pink-pale); padding: 72px 24px; }
+.mecha-faq-title {
+  font-size: clamp(17px, 2.2vw, 22px);
+  font-weight: 700;
+  color: var(--brown);
+  text-align: center;
+  margin-bottom: 40px;
+  letter-spacing: 0.1em;
+}
+.mecha-faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 860px;
+  margin: 0 auto;
+}
+.mecha-faq-card {
+  background: white;
+  border-radius: 18px;
+  padding: 26px 34px;
+  box-shadow: 0 2px 14px rgba(0,0,0,0.05);
+}
+.mecha-faq-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+.mecha-faq-row + .mecha-faq-row { margin-top: 14px; }
+.mq-badge {
+  width: 30px; height: 30px;
+  border-radius: 50%;
+  background: var(--sage);
+  color: white;
+  font-size: 14px;
+  font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.ma-badge {
+  width: 30px; height: 30px;
+  border-radius: 50%;
+  background: #F2A898;
+  color: white;
+  font-size: 14px;
+  font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.mq-text { font-size: 16px; font-weight: 700; color: var(--brown); line-height: 1.7; padding-top: 3px; }
+.ma-text { font-size: 14px; color: var(--brown-mid); line-height: 2; padding-top: 3px; }
+
+/* 開催場所 */
+.mecha-venue-sec {
+  background-color: white;
+  background-image:
+    radial-gradient(circle, rgba(255,179,193,0.88) 9px, transparent 9px),
+    radial-gradient(circle, rgba(255,224,138,0.88) 7px, transparent 7px),
+    radial-gradient(circle, rgba(168,216,234,0.88) 8px, transparent 8px),
+    radial-gradient(circle, rgba(200,230,190,0.75) 7px, transparent 7px),
+    radial-gradient(circle, rgba(255,179,193,0.65) 6px, transparent 6px),
+    radial-gradient(circle, rgba(255,224,138,0.65) 9px, transparent 9px),
+    radial-gradient(circle, rgba(168,216,234,0.65) 6px, transparent 6px);
+  background-size: 220px 220px, 280px 280px, 200px 200px, 260px 260px, 320px 320px, 240px 240px, 190px 190px;
+  background-position: 30px 40px, 130px 20px, 70px 150px, 190px 90px, 10px 200px, 160px 170px, 250px 30px;
+  padding: 72px 24px;
+}
+.mecha-venue-sub {
+  text-align: center;
+  font-size: 14px;
+  color: var(--brown-mid);
+  margin-bottom: 36px;
+  line-height: 1.9;
+}
+.mecha-venue-row {
+  display: flex;
+  gap: 10px;
+  max-width: 1060px;
+  margin: 0 auto 36px;
+}
+.mecha-venue-photo {
+  flex: 1;
+  height: 195px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--pink-pale);
+}
+.mecha-venue-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.mecha-venue-btns {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+@media (max-width: 768px) {
+  .mecha-hero-inner { grid-template-columns: 1fr; gap: 32px; }
+  .mecha-side { flex-direction: row; justify-content: center; gap: 14px; }
+  .mecha-circle.lg { width: 150px; height: 150px; }
+  .mecha-circle.sm { width: 100px; height: 100px; }
+  .mecha-flow-grid { grid-template-columns: repeat(2, 1fr); }
+  .mecha-white-card { padding: 28px 22px; }
+  .mecha-voice-card { flex-direction: column; align-items: center; text-align: center; gap: 14px; }
+  .mecha-faq-card { padding: 20px 18px; }
+  .mecha-venue-row { flex-wrap: wrap; }
+  .mecha-venue-photo { min-width: calc(50% - 5px); height: 140px; }
+}
+
+/* ── めちゃくちゃあそび締めCTA ── */
+.mecha-cta-sec {
+  background: linear-gradient(135deg, var(--pink-dark) 0%, #5C3E28 100%);
+  padding: 72px 24px;
+  text-align: center;
+  color: white;
+}
+.mecha-cta-copy {
+  font-size: clamp(15px, 2vw, 19px);
+  font-weight: 700;
+  line-height: 1.9;
+  margin-bottom: 36px;
+  opacity: 0.97;
+}
+.mecha-cta-btns {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.mecha-cta-home {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: rgba(255,255,255,0.75);
+  font-size: 13px;
+  font-weight: 500;
+  font-family: inherit;
+  text-decoration: none;
+  border: 1.5px solid rgba(255,255,255,0.35);
+  border-radius: 22px;
+  padding: 10px 20px;
+  transition: opacity 0.2s, border-color 0.2s;
+}
+.mecha-cta-home:hover { opacity: 0.85; border-color: rgba(255,255,255,0.7); }
+
+/* ── テーマ切り替えパネル ── */
+#theme-panel {
+  position: fixed;
+  bottom: 24px;
+  right: 20px;
+  z-index: 999;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.14);
+  padding: 12px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+#theme-label {
+  font-size: 11px;
+  color: #999;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+}
+#theme-swatches {
+  display: flex;
+  gap: 8px;
+}
+.ts {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  cursor: pointer;
+  transition: border-color 0.2s, transform 0.15s;
+  outline: none;
+}
+.ts:hover { transform: scale(1.18); }
+.ts.active { border-color: #333; }
+</style>
+</head>
+<body>
+
+<!-- ══════════════ HEADER ══════════════ -->
+<header>
+  <div class="hdr">
+    <!-- ロゴ（クマのマスコット付き） -->
+    <a href="#hero" class="logo-wrap">
+      <svg class="logo-bear" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- 耳 -->
+        <circle cx="10" cy="10" r="7" fill="#C8A882"/>
+        <circle cx="34" cy="10" r="7" fill="#C8A882"/>
+        <circle cx="10" cy="10" r="4" fill="#E8C89A"/>
+        <circle cx="34" cy="10" r="4" fill="#E8C89A"/>
+        <!-- 頭 -->
+        <circle cx="22" cy="26" r="16" fill="#C8A882"/>
+        <!-- 顔の白い部分 -->
+        <ellipse cx="22" cy="29" rx="9" ry="7" fill="#E8C89A"/>
+        <!-- 目 -->
+        <circle cx="16.5" cy="23.5" r="2.2" fill="#3E2C1E"/>
+        <circle cx="27.5" cy="23.5" r="2.2" fill="#3E2C1E"/>
+        <circle cx="17.1" cy="22.8" r="0.7" fill="white"/>
+        <circle cx="28.1" cy="22.8" r="0.7" fill="white"/>
+        <!-- 鼻 -->
+        <ellipse cx="22" cy="27.5" rx="2.5" ry="1.8" fill="#7A5C40"/>
+        <!-- 口 -->
+        <path d="M19.5 30.5 Q22 32.5 24.5 30.5" stroke="#7A5C40" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+      </svg>
+      <div class="logo-text">
+        <span class="logo-sub">親子教室</span>
+        <span class="logo-name">nicorico</span>
+      </div>
+    </a>
+    <nav>
+      <ul>
+        <li><a href="#hero">ホーム</a></li>
+        <li><a href="#mechakucha">めちゃくちゃあそび</a></li>
+        <li><a href="#babysitter">ベビーシッター</a></li>
+        <li><a href="https://ameblo.jp/sachimama18/" target="_blank" rel="noopener">ブログ</a></li>
+        <li><a href="#access">アクセス</a></li>
+      </ul>
+    </nav>
+    <button class="hamburger" onclick="toggleMobNav()" aria-label="メニュー">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="hdr-sns">
+      <a href="https://www.instagram.com/baby_nicorico/" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg class="ig-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="2" width="20" height="20" rx="5"/>
+          <circle cx="12" cy="12" r="4"/>
+          <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+        </svg>
+      </a>
+      <a href="https://reserva.be/nicorico" target="_blank" rel="noopener" class="btn-schedule">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        レッスン日程・ご予約
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- モバイルメニュー -->
+<nav class="mob-nav" id="mob-nav">
+  <ul>
+    <li><a href="#hero"        onclick="closeMobNav()">ホーム</a></li>
+    <li><a href="#mechakucha" onclick="closeMobNav()">めちゃくちゃあそび</a></li>
+    <li><a href="#babysitter" onclick="closeMobNav()">ベビーシッター</a></li>
+    <li><a href="https://ameblo.jp/sachimama18/" target="_blank" rel="noopener" onclick="closeMobNav()">ブログ</a></li>
+    <li><a href="#access"     onclick="closeMobNav()">アクセス</a></li>
+  </ul>
+</nav>
+
+<!-- ══════════════ HERO ══════════════ -->
+<section class="hero" id="hero">
+  <div class="hero-bg">
+    <img src="53.png" alt="教室の様子" class="ri">
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <p class="hero-dec">みんなが主役の少人数レッスン</p>
+    <h1 class="hero-h1">
+      親子の〝今〟をたいせつに、<br>
+      <span class="sub">ふれる・感じる・あそぶを通して</span><br>
+      子どもの根っこを育てる
+    </h1>
+    <div class="hero-btns">
+      <a href="https://reserva.be/nicorico" target="_blank" rel="noopener" class="btn-reserve">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        レッスン日程・ご予約
+      </a>
+      <a href="https://line.me/R/ti/p/@075mpplb?ts=03251149&oat_content=url" target="_blank" rel="noopener" class="btn-line-hero">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+        公式LINE
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ 私の想い ══════════════ -->
+<section class="sec sec-bg-beige">
+  <div class="inner">
+    <div class="omoi-centered">
+      <div class="omoi-circle-photo">
+        <img src="47.png" alt="ママと赤ちゃん" class="ri">
+      </div>
+      <span class="badge">私の想い</span>
+      <p class="omoi-lead" style="margin-top:14px;">赤ちゃんと笑いあって、<br>こどもと夢中になって、<br>ママもほっとできる場所。</p>
+      <div class="omoi-body" style="margin-top:18px;">
+        <p>nicorico（ニコリコ）は、ベビーマッサージやリトミック、そして"めちゃくちゃ遊び"などを通して、親子でたっぷりふれあいながら、心も体ものびのび育つ時間を大切にしています。</p>
+        <p>「ちょっと外に出たいな」「子どもと一緒に何かしたいな」<br>そんな気持ちがふっとわいた日に、気軽に来られる親子の居場所です。</p>
+        <p>おうちではできない体験があったり、子どもの"好き"が見つかったり、ママ同士で「わかる〜！」って笑いあえたり。</p>
+        <p>ここに来ると、なんだかちょっと心があたたかくなる。そんな教室でありたいと思っています。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ メリット4項目 ══════════════ -->
+<section class="sec sec-bg-white">
+  <div class="inner">
+    <div class="sec-center" style="margin-bottom:52px;">
+      <span class="badge">nicorico のいいところ</span>
+      <h2 class="sec-title">こんないいことがあります</h2>
+      <div class="sec-rule"></div>
+    </div>
+    <div class="merit-alt-list">
+
+      <!-- 01: 写真左・テキスト右 -->
+      <div class="merit-alt-row">
+        <div class="merit-circle-wrap">
+          <img src="46.png" alt="親子のふれあい">
+        </div>
+        <div class="merit-alt-text">
+          <p class="merit-alt-num">01</p>
+          <h3>親子の絆が深まり、毎日のふれあいが<br>もっとあたたかく</h3>
+          <p>"だいすき"が育まれ、日々の関わりがより豊かな時間に。ママのリフレッシュにもなり、笑顔が増えます。</p>
+        </div>
+      </div>
+
+      <!-- 02: ベージュボックス左・写真右 -->
+      <div class="merit-alt-row rev">
+        <div class="merit-circle-wrap">
+          <img src="43.png" alt="赤ちゃんのすこやかな育ち">
+        </div>
+        <div class="merit-beige-box">
+          <p class="merit-alt-num">02</p>
+          <h3>赤ちゃんのこころとからだが<br>すこやかに育つ</h3>
+          <p>発達に合わせたあそびで五感を刺激し、自己肯定感の土台が自然と育まれます。</p>
+        </div>
+      </div>
+
+      <!-- 03: 写真左・テキスト右 -->
+      <div class="merit-alt-row">
+        <div class="merit-circle-wrap">
+          <img src="44.png" alt="感性を伸ばすあそび">
+        </div>
+        <div class="merit-alt-text">
+          <p class="merit-alt-num">03</p>
+          <h3>感性や表現力がぐんぐん伸びる</h3>
+          <p>えのぐや粉・新聞紙など様々な素材に触れ、五感を使った活動がたっぷり。興味や個性を引き出す経験から「好き！」を発見！</p>
+        </div>
+      </div>
+
+      <!-- 04: ベージュボックス左・写真右 -->
+      <div class="merit-alt-row rev">
+        <div class="merit-circle-wrap">
+          <img src="52.png" alt="ママ友とつながれる安心の場">
+        </div>
+        <div class="merit-beige-box">
+          <p class="merit-alt-num">04</p>
+          <h3>安心できる環境で<br>ママ友ともつながれる</h3>
+          <p>おうちではできないあそびも安全に楽しめます。同じ子育て中のママと出会える、安心の居場所。</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ コース紹介 ══════════════ -->
+<section class="sec sec-bg-pink" id="courses">
+  <div class="inner">
+    <div class="sec-center">
+      <span class="badge">コース紹介</span>
+      <h2 class="sec-title">コース紹介</h2>
+      <div class="sec-rule"></div>
+    </div>
+    <p class="course-intro">おうちでの保育サポートと、教室での感触あそびの<br>2つのサービスをご用意しています</p>
+
+    <div class="course-bigcards">
+
+      <!-- めちゃくちゃあそび -->
+      <div class="course-bigcard">
+        <div class="course-bigcard-img">
+          <img src="55.png" alt="めちゃくちゃあそび" class="ri">
+        </div>
+        <div class="course-bigcard-overlay"></div>
+        <div class="course-bigcard-body">
+          <div class="cbc-badges">
+            <span class="cbc-age">6ヶ月〜6歳向け</span>
+          </div>
+          <h3 class="cbc-name">めちゃくちゃあそび<span class="cbc-name-sub">（単発レッスン）</span></h3>
+          <p class="cbc-desc">絵の具・水・紙・そざいを使って思い切り楽しむ感触あそび。《だめのない世界》でお子さまの「やりたい！」を尊重します。</p>
+          <a href="#mechakucha" class="btn-detail-w">
+            詳しく見る
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- おうちほいく（ベビーシッター） -->
+      <div class="course-bigcard">
+        <div class="course-bigcard-img">
+          <img src="46.png" alt="おうちほいく（ベビーシッター）" class="ri-c">
+        </div>
+        <div class="course-bigcard-overlay"></div>
+        <div class="course-bigcard-body">
+          <div class="cbc-badges">
+            <span class="cbc-new">NEW</span>
+            <span class="cbc-age">0歳〜3歳向け</span>
+          </div>
+          <h3 class="cbc-name">おうちほいく<span class="cbc-name-sub">（ベビーシッター）</span></h3>
+          <p class="cbc-desc">ご自宅に訪問し、お子さまのペースに合わせてやさしく保育。ベビーマッサージやふれあいあそびで心とからだの発達をサポートします。</p>
+          <a href="#babysitter" class="btn-detail-w">
+            詳しく見る
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ お教室の様子 ══════════════ -->
+<section class="sec sec-bg-beige">
+  <div class="inner">
+    <div class="sec-center">
+      <span class="badge">ギャラリー</span>
+      <h2 class="sec-title">お教室の様子</h2>
+      <div class="sec-rule"></div>
+    </div>
+    <div class="gallery-carousel-outer">
+      <button class="carousel-btn prev" onclick="scrollGallery(-1)" aria-label="前へ">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <div class="gallery-carousel-track" id="galleryTrack">
+        <div class="gallery-circle"><img src="40.png" alt="教室の様子"></div>
+        <div class="gallery-circle"><img src="48.png" alt="教室の様子"></div>
+        <div class="gallery-circle"><img src="49.png" alt="教室の様子"></div>
+        <div class="gallery-circle"><img src="51.png" alt="教室の様子"></div>
+        <div class="gallery-circle"><img src="45.png" alt="教室の様子"></div>
+        <div class="gallery-circle"><img src="42.png" alt="教室の様子"></div>
+      </div>
+      <button class="carousel-btn next" onclick="scrollGallery(1)" aria-label="次へ">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+    </div>
+    <a href="#" class="btn-more" style="margin-top:32px;">もっと見る</a>
+  </div>
+</section>
+
+<!-- ══════════════ ママの声 ══════════════ -->
+<section class="sec sec-bg-white">
+  <div class="inner-sm">
+    <div class="sec-center">
+      <span class="badge">ママの声</span>
+      <h2 class="sec-title">ママの声</h2>
+      <div class="sec-rule"></div>
+    </div>
+    <div class="voice-list-v">
+
+      <div class="voice-card-h">
+        <div class="voice-avatar-wrap">
+          <!-- イラスト：ママアバター A -->
+          <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="40" cy="40" r="40" fill="#FAF6EE"/>
+            <ellipse cx="40" cy="26" rx="17" ry="18" fill="#D4956A"/>
+            <ellipse cx="40" cy="39" rx="13" ry="15" fill="#FDDCBC"/>
+            <path d="M23 42 Q23 62 40 64 Q57 62 57 42" fill="#D4956A"/>
+            <ellipse cx="33.5" cy="36" rx="2.2" ry="2.8" fill="#3E2C1E"/>
+            <ellipse cx="46.5" cy="36" rx="2.2" ry="2.8" fill="#3E2C1E"/>
+            <circle cx="34.2" cy="35.2" r="0.7" fill="white"/>
+            <circle cx="47.2" cy="35.2" r="0.7" fill="white"/>
+            <ellipse cx="30" cy="41" rx="3.5" ry="2" fill="#FFB8A0" opacity="0.55"/>
+            <ellipse cx="50" cy="41" rx="3.5" ry="2" fill="#FFB8A0" opacity="0.55"/>
+            <path d="M35 45.5 Q40 49 45 45.5" stroke="#C8786A" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="voice-body">
+          <p class="v-text-h">おうちではなかなかできない遊びができて、子どもが本当に楽しそうでした！絵の具を使ったあそびでは、最初は戸惑っていたけど、だんだん夢中に。終わったあとも「また行きたい！」と言ってくれて嬉しかったです。</p>
+          <p class="v-author-h">（大阪市・Yさん）</p>
+        </div>
+      </div>
+
+      <div class="voice-card-h">
+        <div class="voice-avatar-wrap">
+          <!-- イラスト：ママアバター B -->
+          <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="40" cy="40" r="40" fill="#EFF7FF"/>
+            <ellipse cx="40" cy="25" rx="17" ry="19" fill="#C4A882"/>
+            <ellipse cx="40" cy="39" rx="13" ry="15" fill="#FDDCBC"/>
+            <path d="M23 41 Q23 63 40 65 Q57 63 57 41" fill="#C4A882"/>
+            <path d="M23 28 Q32 20 40 26 Q48 20 57 28 Q54 15 40 13 Q26 15 23 28Z" fill="#A07850"/>
+            <ellipse cx="33.5" cy="36" rx="2.2" ry="2.8" fill="#3E2C1E"/>
+            <ellipse cx="46.5" cy="36" rx="2.2" ry="2.8" fill="#3E2C1E"/>
+            <circle cx="34.2" cy="35.2" r="0.7" fill="white"/>
+            <circle cx="47.2" cy="35.2" r="0.7" fill="white"/>
+            <ellipse cx="30" cy="41" rx="3.5" ry="2" fill="#FFB8A0" opacity="0.55"/>
+            <ellipse cx="50" cy="41" rx="3.5" ry="2" fill="#FFB8A0" opacity="0.55"/>
+            <path d="M35 45.5 Q40 49 45 45.5" stroke="#C8786A" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="voice-body">
+          <p class="v-text-h">はじめての育児で不安も多かったけど、先生がやさしく声をかけてくれてホッとしました。ベビーマッサージで娘とじっくりふれあう時間が、私にとっても癒しの時間でした。</p>
+          <p class="v-author-h">（平野区・Mさん）</p>
+        </div>
+      </div>
+
+      <div class="voice-card-h">
+        <div class="voice-avatar-wrap">
+          <!-- イラスト：ママアバター C -->
+          <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="40" cy="40" r="40" fill="#FAF6EE"/>
+            <ellipse cx="40" cy="24" rx="18" ry="20" fill="#8B5E3C"/>
+            <ellipse cx="40" cy="39" rx="13" ry="15" fill="#FDDCBC"/>
+            <path d="M22 40 Q22 64 40 66 Q58 64 58 40" fill="#8B5E3C"/>
+            <ellipse cx="40" cy="46" rx="8" ry="6" fill="#FDDCBC"/>
+            <ellipse cx="33.5" cy="36" rx="2.2" ry="2.8" fill="#3E2C1E"/>
+            <ellipse cx="46.5" cy="36" rx="2.2" ry="2.8" fill="#3E2C1E"/>
+            <circle cx="34.2" cy="35.2" r="0.7" fill="white"/>
+            <circle cx="47.2" cy="35.2" r="0.7" fill="white"/>
+            <ellipse cx="30" cy="41.5" rx="3.5" ry="2" fill="#FFB8A0" opacity="0.55"/>
+            <ellipse cx="50" cy="41.5" rx="3.5" ry="2" fill="#FFB8A0" opacity="0.55"/>
+            <path d="M35 46 Q40 49.5 45 46" stroke="#C8786A" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="voice-body">
+          <p class="v-text-h">親子で"今"を楽しめる場所に出会えてよかったです！泣いてもOK、動き回ってもOKという雰囲気がありがたくて、安心して通えます。ママ友もできて、気持ちが軽くなりました。</p>
+          <p class="v-author-h">（大阪市・Rさん）</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ よくあるご質問 ══════════════ -->
+<section class="sec sec-bg-pink">
+  <div class="inner-sm">
+    <div class="sec-center">
+      <span class="badge">FAQ</span>
+      <h2 class="sec-title">よくあるご質問</h2>
+      <div class="sec-rule"></div>
+    </div>
+    <div class="faq-list">
+
+      <div class="faq-item open">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          大人も洋服汚れますか？
+          <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">はい！ぜひ率先して遊んでください♪</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          ０歳ですが参加できますか？
+          <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">（回答を入力してください）</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          急に体調を崩すことがあります。キャンセルはできますか？
+          <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">（回答を入力してください）</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          継続でのクラスはありませんか？
+          <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">（回答を入力してください）</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          ベビーシッターは定期でも可能ですか？
+          <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">（回答を入力してください）</div></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ 講師プロフィール ══════════════ -->
+<section class="sec sec-bg-white">
+  <div class="inner">
+    <div class="sec-center">
+      <span class="badge">講師プロフィール</span>
+      <h2 class="sec-title">講師プロフィール</h2>
+      <div class="sec-rule"></div>
+    </div>
+    <div class="profile-grid">
+      <div class="profile-imgs">
+        <div class="p-img-main" style="overflow:hidden; background:var(--pink-pale);"><img src="50.png" alt="たなかさちね" class="ri-c"></div>
+        <div class="p-img-sub" style="overflow:hidden; background:var(--pink-pale);"><img src="35.png" alt="レッスン風景" class="ri-c"></div>
+        <div class="p-img-sub" style="overflow:hidden; background:var(--pink-pale);"><img src="43.png" alt="レッスン風景" class="ri-c"></div>
+      </div>
+      <div>
+        <p class="p-name">たなかさちね</p>
+        <div class="p-tags">
+          <span class="p-tag">絵本とリトミック</span>
+          <span class="p-tag">感触めちゃくちゃあそび</span>
+          <span class="p-tag">幼稚園・保育園 12年目</span>
+          <span class="p-tag">5歳と4歳の年子育児中</span>
+        </div>
+        <p class="p-bio">子どもの頃から「保育士になりたい」という夢を持ち、大学卒業後からずっと保育の現場で働いています。
+
+現在は、５歳と４歳の年子を育てており、子どもたちと触れ合う毎日の中で「親子さまが安心して楽しめる場所をつくりたい」と思い、教室の活動をはじめました。
+
+感触あそびや全身を使った"めちゃくちゃ遊び"など、子どもの発達に寄り添ったクラスを開講しています。
+子育て中のママだからこそ寄り添える気持ちを大切にしながら笑顔でレッスンをお届けします。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ アクセス ══════════════ -->
+<section class="sec sec-bg-beige" id="access">
+  <div class="inner-lg">
+    <div class="sec-center">
+      <span class="badge">アクセス</span>
+      <h2 class="sec-title">アクセス</h2>
+      <div class="sec-rule"></div>
+    </div>
+    <div class="access-grid">
+
+      <div class="access-card">
+        <div class="ph a-map"><span class="ph-label">スクリーンショット 2026-02-11 18.22.27.png</span></div>
+        <div class="a-body">
+          <p class="a-name">ゆめニティプラザ</p>
+          <p class="a-addr">大阪府松原市上田３丁目6−１<br>（近鉄松原駅から直結 徒歩3分）</p>
+          <p class="a-note">車でも自転車でも電車でも通いやすい場所です♪こちらの市民サロンAのお部屋でレッスンを行います。</p>
+          <a href="#" class="btn-map">Googleマップで見る</a>
+        </div>
+      </div>
+
+      <div class="access-card">
+        <div class="ph a-map"><span class="ph-label">マナパーク 地図</span></div>
+        <div class="a-body">
+          <p class="a-name">マナパーク</p>
+          <p class="a-addr">大阪市都島区都島本通 3-19-4 1F<br>（地下鉄谷町線「都島駅」から徒歩2分）</p>
+          <p class="a-note">駅近で明るい、親子にやさしい空間<br>木の温もりと光あふれるお部屋です</p>
+          <a href="#" class="btn-map">Googleマップで見る</a>
+        </div>
+      </div>
+
+      <div class="access-card">
+        <div class="ph a-map"><span class="ph-label">スクリーンショット 2026-02-22 15.39_edited.jpg</span></div>
+        <div class="a-body">
+          <p class="a-name">天王寺ベースオントップ</p>
+          <p class="a-addr">大阪市天王寺区堀越町13-16<br>堀越天王寺ビル<br>（JR天王寺駅から徒歩3分）</p>
+          <p class="a-note">ダンススタジオではめちゃくちゃ遊び、ピアノスタジオでは絵本リトミックを行います</p>
+          <a href="#" class="btn-map">Googleマップで見る</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ ホームエンドCTA ══════════════ -->
+<section class="home-end-sec">
+  <div class="inner" style="max-width:400px;">
+    <p class="home-end-title">お気軽にご相談ください</p>
+    <p class="home-end-lead">ご質問・参加ご希望はLINEからどうぞ♪</p>
+    <a href="https://line.me/R/ti/p/@075mpplb?ts=03251149&oat_content=url" target="_blank" rel="noopener" class="btn-hec btn-hec-line" style="max-width:300px; margin:0 auto;">
+      <span>公式LINEはこちら</span>
+      <span class="btn-hec-arrow">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+      </span>
+    </a>
+  </div>
+</section>
+
+<!-- ══════════════ めちゃくちゃあそび（詳細） ══════════════ -->
+<div class="subpage-marker">
+  <span class="subpage-marker-line"></span>
+  <span class="subpage-marker-label">めちゃくちゃあそび 詳細</span>
+  <span class="subpage-marker-line"></span>
+</div>
+<div id="mechakucha"></div>
+
+<!-- ヒーロー：左右サークル写真＋水彩背景 -->
+<section class="mecha-hero-sec">
+  <div class="mecha-hero-inner">
+    <!-- 左の写真 -->
+    <div class="mecha-side mecha-side-left">
+      <div class="mecha-circle lg"><img src="44.png" alt="子どもが絵の具で遊ぶ様子"></div>
+      <div class="mecha-circle sm"><img src="35.png" alt="先生と子ども"></div>
+    </div>
+    <!-- 中央テキスト -->
+    <div class="mecha-center">
+      <h2 class="mecha-title">めちゃくちゃあそび</h2>
+      <p class="mecha-sub">（単発レッスン）</p>
+      <hr class="mecha-dotline">
+      <p class="mecha-desc">絵の具・水・紙・そざいを使って<br>おもいっきり楽しむ感触あそび。<br><br>《だめのない世界》を大切にし、<br>お子さま一人ひとりの「やりたい！」を尊重します。<br><br>大胆に遊ぶのも、そっと観察するのも、<br>すべてが素敵な表現。<br>親子で一緒に楽しむことで、<br>遊びが特別な思い出になります。</p>
+      <a href="https://reserva.be/nicorico" target="_blank" rel="noopener" class="btn-sage">日程を確認する</a>
+    </div>
+    <!-- 右の写真 -->
+    <div class="mecha-side mecha-side-right">
+      <div class="mecha-circle lg"><img src="49.png" alt="子どもたちと先生"></div>
+      <div class="mecha-circle sm"><img src="48.png" alt="遊びの様子"></div>
+    </div>
+  </div>
+</section>
+
+<!-- 大切にしていること -->
+<section class="mecha-taisetsu-sec">
+  <div class="inner-sm">
+    <div class="mecha-white-card">
+      <h3 class="mecha-card-title">大切にしていること</h3>
+      <hr class="mecha-dotline" style="margin-bottom:26px;">
+      <ul class="mecha-check-list">
+        <li>子どもの「やってみよう！」の気持ちを大切にします</li>
+        <li>親子で一緒に夢中になって楽しむ</li>
+        <li>五感をたっぷり使った経験で感受性や表現力が豊かになります</li>
+        <li>「できた！」という気持ちが自己表現への自信につながります</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 当日の流れ -->
+<section class="mecha-flow-sec">
+  <div class="inner">
+    <div class="sec-center">
+      <h2 class="sec-title">当日の流れ</h2>
+      <hr class="mecha-dotline" style="margin:0 auto 40px;">
+    </div>
+    <div class="mecha-flow-grid">
+
+      <div class="mecha-step">
+        <div class="mecha-step-num">01</div>
+        <p class="mecha-step-label">出席確認・絵本</p>
+        <div class="mecha-step-img"><img src="35.png" alt="出席確認・絵本"></div>
+        <p class="mecha-step-desc">まずはお名前呼びからスタート！みんなのことを知ってから手遊びや絵本読みに移行します</p>
+      </div>
+
+      <div class="mecha-step">
+        <div class="mecha-step-num">02</div>
+        <p class="mecha-step-label">あそびスタート</p>
+        <div class="mecha-step-img"><img src="44.png" alt="あそびスタート"></div>
+        <p class="mecha-step-desc">自分のからだが赴くままに自由にあそびを楽しみます。この時間だけは"だめ"という言葉は禁句ワードです</p>
+      </div>
+
+      <div class="mecha-step">
+        <div class="mecha-step-num">03</div>
+        <p class="mecha-step-label">そざいと組み合わせて</p>
+        <div class="mecha-step-img"><img src="49.png" alt="そざいあそび"></div>
+        <p class="mecha-step-desc">月によってテーマがあるのでそのテーマに合わせたそざいを少しずつ出していきます。子どもたちが自分で気づいて試せる時間です</p>
+      </div>
+
+      <div class="mecha-step">
+        <div class="mecha-step-num">04</div>
+        <p class="mecha-step-label">終了・お片付け</p>
+        <div class="mecha-step-img"><img src="51.png" alt="お片付け"></div>
+        <p class="mecha-step-desc">自分の中で"終わり"が決まったらお片付けを始めていきます。ステキな遊び跡がついたお洋服もお着替えしていきます</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- 持ち物・参加費 -->
+<section class="mecha-fee-sec">
+  <div class="inner-sm">
+    <div class="mecha-white-card">
+      <h3 class="mecha-card-title">持ち物・参加費</h3>
+      <hr class="mecha-dotline" style="margin-bottom:28px;">
+
+      <div class="mecha-fee-block">
+        <p class="mecha-fee-label">【持ち物】</p>
+        <ul class="mecha-fee-list">
+          <li>お着替え・汚れてもいいタオル</li>
+          <li>お湯・ウェットティッシュ</li>
+          <li>お子さまの飲み物（授乳OK）</li>
+          <li>いつものおでかけセット</li>
+        </ul>
+      </div>
+
+      <div class="mecha-fee-block">
+        <p class="mecha-fee-label">【参加費】</p>
+        <p class="mecha-fee-price">4,000円（税込）（教材費など）</p>
+        <p class="mecha-fee-note">※お友達と参加　→ お互い500円引き<br>※きょうだい参加　→ ＋2,000円</p>
+      </div>
+
+      <div class="mecha-fee-block">
+        <p class="mecha-fee-label">【特典】</p>
+        <ul class="mecha-fee-list">
+          <li>レッスン中のお写真プレゼント</li>
+          <li>個人製作のお持ち帰り</li>
+          <li>レッスン後に届く thank you letter 付き</li>
+        </ul>
+      </div>
+
+      <div style="text-align:center; margin-top:36px;">
+        <a href="https://reserva.be/nicorico" target="_blank" rel="noopener" class="btn-sage">日程を確認する</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- よくあるご質問（めちゃくちゃあそび） -->
+<section class="mecha-faq-sec">
+  <div class="inner">
+    <h2 class="mecha-faq-title">＊ よくあるご質問 ＊</h2>
+    <div class="mecha-faq-list">
+
+      <div class="mecha-faq-card">
+        <div class="mecha-faq-row">
+          <span class="mq-badge">Q</span>
+          <p class="mq-text">対象年齢は？</p>
+        </div>
+        <div class="mecha-faq-row">
+          <span class="ma-badge">A</span>
+          <p class="ma-text">おっちんができるころ〜未就学児まで幅広く参加していただけます♪</p>
+        </div>
+      </div>
+
+      <div class="mecha-faq-card">
+        <div class="mecha-faq-row">
+          <span class="mq-badge">Q</span>
+          <p class="mq-text">汚れが心配です…</p>
+        </div>
+        <div class="mecha-faq-row">
+          <span class="ma-badge">A</span>
+          <p class="ma-text">絵の具や色水で汚れる可能性があるため、必ず汚れても良い服でお越しください。親御さんも動きやすく汚れてOKな服がおすすめです。又、お湯は絵の具がよく落ちるのでおすすめです！！</p>
+        </div>
+      </div>
+
+      <div class="mecha-faq-card">
+        <div class="mecha-faq-row">
+          <span class="mq-badge">Q</span>
+          <p class="mq-text">絵の具を嫌がったらどうしよう？</p>
+        </div>
+        <div class="mecha-faq-row">
+          <span class="ma-badge">A</span>
+          <p class="ma-text">お子さまが触りたいと思えるまで待ちます♪ ママさんやパパさんが率先して遊ぶことでお子さまも安心して遊び始めることができます♪</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- 開催場所 -->
+<section class="mecha-venue-sec">
+  <div class="inner">
+    <div class="sec-center">
+      <h2 class="sec-title">開催場所</h2>
+      <hr class="mecha-dotline" style="margin:0 auto 16px;">
+    </div>
+    <p class="mecha-venue-sub">各会ごとに素敵な開催場所でご案内しています</p>
+    <div class="mecha-venue-row">
+      <!-- 会場写真：さちねさんに実際の会場写真に差し替えてもらう -->
+      <div class="mecha-venue-photo"><img src="6.png"  alt="開催場所"></div>
+      <div class="mecha-venue-photo"><img src="7.png"  alt="開催場所"></div>
+      <div class="mecha-venue-photo"><img src="8.png"  alt="開催場所"></div>
+      <div class="mecha-venue-photo"><img src="9.png"  alt="開催場所"></div>
+      <div class="mecha-venue-photo"><img src="10.png" alt="開催場所"></div>
+    </div>
+    <div class="mecha-venue-btns">
+      <a href="#access" class="btn-sage">開催場所を見る</a>
+      <a href="https://line.me/R/ti/p/@075mpplb?ts=03251149&oat_content=url" target="_blank" rel="noopener" class="btn-sage">お問い合わせはこちらから</a>
+    </div>
+  </div>
+</section>
+
+<!-- お客様の声（パステルドット背景） -->
+<section class="mecha-voice-sec">
+  <div class="inner">
+    <div class="sec-center">
+      <h2 class="sec-title">お客様の声</h2>
+      <hr class="mecha-dotline" style="margin:0 auto 40px;">
+    </div>
+
+    <div class="mecha-voice-card">
+      <div class="mecha-avatar">
+        <!-- 線画スタイルのイラストアバター A（金髪ショート） -->
+        <svg viewBox="0 0 68 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="34" cy="34" r="34" fill="#FFF8EE"/>
+          <!-- 髪 -->
+          <ellipse cx="34" cy="27" rx="14" ry="15" fill="#ECC86A"/>
+          <!-- 顔 -->
+          <ellipse cx="34" cy="34" rx="11" ry="12" fill="#FFE4CC"/>
+          <!-- 前髪ライン -->
+          <path d="M20 27 Q20 17 34 15 Q48 17 48 27" fill="#ECC86A"/>
+          <!-- 目（線） -->
+          <path d="M27.5 30.5 Q29 29 30.5 30.5" stroke="#4A3728" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+          <path d="M37.5 30.5 Q39 29 40.5 30.5" stroke="#4A3728" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+          <!-- 頬 -->
+          <ellipse cx="26" cy="34.5" rx="3.5" ry="2" fill="#FFB8A0" opacity="0.5"/>
+          <ellipse cx="42" cy="34.5" rx="3.5" ry="2" fill="#FFB8A0" opacity="0.5"/>
+          <!-- 口（スマイル） -->
+          <path d="M29.5 37.5 Q34 41 38.5 37.5" stroke="#C8786A" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+          <!-- 首・肩 -->
+          <rect x="30" y="45" width="8" height="5" rx="3" fill="#FFE4CC"/>
+          <path d="M18 58 Q18 50 34 50 Q50 50 50 58" fill="#BFD0CC" opacity="0.75"/>
+        </svg>
+      </div>
+      <div class="mecha-v-body">
+        <p class="mecha-v-text">初めての絵の具あそびだったですがとても楽しそうに触れていて参加してよかったなと感じました。また参加します。</p>
+        <p class="mecha-v-from">7ヶ月男の子　ママさん</p>
+      </div>
+    </div>
+
+    <div class="mecha-voice-card">
+      <div class="mecha-avatar">
+        <!-- 線画スタイルのイラストアバター B（金髪ロング） -->
+        <svg viewBox="0 0 68 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="34" cy="34" r="34" fill="#FFF8EE"/>
+          <!-- ロングヘア（左右）-->
+          <path d="M20 30 Q17 45 20 56" stroke="#E0A830" stroke-width="9" stroke-linecap="round"/>
+          <path d="M48 30 Q51 45 48 56" stroke="#E0A830" stroke-width="9" stroke-linecap="round"/>
+          <!-- 髪上部 -->
+          <ellipse cx="34" cy="26" rx="14" ry="15" fill="#E0A830"/>
+          <!-- 顔 -->
+          <ellipse cx="34" cy="33" rx="11" ry="12" fill="#FFE4CC"/>
+          <!-- 前髪 -->
+          <path d="M20 26 Q20 16 34 14 Q48 16 48 26" fill="#E0A830"/>
+          <!-- 目（線） -->
+          <path d="M27.5 30 Q29 28.5 30.5 30" stroke="#4A3728" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+          <path d="M37.5 30 Q39 28.5 40.5 30" stroke="#4A3728" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+          <!-- 頬 -->
+          <ellipse cx="26" cy="34" rx="3.5" ry="2" fill="#FFB8A0" opacity="0.5"/>
+          <ellipse cx="42" cy="34" rx="3.5" ry="2" fill="#FFB8A0" opacity="0.5"/>
+          <!-- 口 -->
+          <path d="M30 37 Q34 40.5 38 37" stroke="#C8786A" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+          <!-- 首・肩 -->
+          <rect x="30" y="44" width="8" height="5" rx="3" fill="#FFE4CC"/>
+          <path d="M18 58 Q18 50 34 50 Q50 50 50 58" fill="#F9A8C9" opacity="0.6"/>
+        </svg>
+      </div>
+      <div class="mecha-v-body">
+        <p class="mecha-v-text">感触あそびが大好きだったのですごく楽しみにしてました！！！洋服めちゃくちゃになるくらい遊んでいて見ていてこちらも楽しかったです。</p>
+        <p class="mecha-v-from">4歳女の子　ママさん</p>
+      </div>
+    </div>
+
+    <div style="text-align:center; margin-top:36px;">
+      <a href="https://reserva.be/nicorico" target="_blank" rel="noopener" class="btn-sage">日程を確認する</a>
+    </div>
+  </div>
+</section>
+
+<!-- めちゃくちゃあそびCTA -->
+<section class="mecha-cta-sec">
+  <div class="inner" style="text-align:center;">
+    <p class="mecha-cta-copy">参加してみたい！気になる！と思ったら<br>まずはLINEでお気軽にご連絡ください</p>
+    <div class="mecha-cta-btns">
+      <a href="https://line.me/R/ti/p/@075mpplb?ts=03251149&oat_content=url" target="_blank" rel="noopener" class="btn-line-cta">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+        公式LINEはこちら
+      </a>
+      <a href="#babysitter" class="mecha-cta-home">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        その他のサービスを見る
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ おうちほいく（ベビーシッター） ══════════════ -->
+<div class="subpage-marker">
+  <span class="subpage-marker-line"></span>
+  <span class="subpage-marker-label">ベビーシッター 詳細</span>
+  <span class="subpage-marker-line"></span>
+</div>
+<div id="babysitter"></div>
+
+<!-- ヒーロー -->
+<section class="sitter-hero-sec">
+  <div class="sitter-hero-inner">
+    <div class="sitter-hero-text">
+      <h2>ママも自分の時間も大切に。<br>ひと休憩することで<br>お子さまとの時間がもっと豊かに<br>ママ自身も輝ける</h2>
+      <a href="https://line.me/R/ti/p/@064ekqaq?oat_content=url&ts=02231659" target="_blank" rel="noopener" class="btn-sage">シッターの詳細はこちら</a>
+    </div>
+    <div class="sitter-hero-imgs">
+      <div class="sitter-img-round" style="overflow:hidden; background:var(--pink-light);"><img src="46.png" alt="おうちほいく" class="ri-c"></div>
+      <div class="sitter-img-round" style="overflow:hidden; background:var(--pink-light);"><img src="35.png" alt="保育の様子" class="ri-c"></div>
+      <div class="sitter-img-round" style="overflow:hidden; background:var(--pink-light);"><img src="43.png" alt="ふれあい" class="ri-c"></div>
+      <div class="sitter-img-round" style="overflow:hidden; background:var(--pink-light);"><img src="42.png" alt="絵本あそび" class="ri-c"></div>
+    </div>
+  </div>
+</section>
+
+<!-- 想い -->
+<section class="sitter-intro-sec">
+  <div class="inner-sm">
+    <p class="sitter-intro-lead">子育ても、自分の時間も<br>どちらも大切にしたいママへ</p>
+    <p class="sitter-intro-body">お子さまとの時間はかけがえのない宝物。<br><br>でも、ずっとずっと毎日頑張り続けていると<br>疲れたり、しんどくなることがありますよね。<br><br>私自身、年子育児をしていて何度も<br>"１時間でいいから1人時間が欲しい"<br>そう思うことがあります‥。<br><br>同じように、頑張るママさんにひと休憩してもらえるように<br>ベビーシッターを始めます＊</p>
+    <p style="font-size:15px; font-weight:700; color:var(--brown); margin-bottom:16px;">こんな想い、ありませんか？</p>
+    <div class="sitter-wish-box">
+      <p>・子どもとの時間も大切だけど、ちょっとゆっくりしたい<br>
+・育休中に何か身につけたいけど、子どもの見守りがある‥<br>
+・映画・カフェ・美容室に行きたい<br>
+・じっくりお買い物がしたい<br>
+・子どもを連れてお出かけに行きたいけど、1人では不安</p>
+    </div>
+    <p class="sitter-from">その気持ちをぜひnicoricoにお聞かせください♪<br>12年の保育士経験を活かしてサポートさせて頂きます。</p>
+  </div>
+</section>
+
+<!-- えらべるサポート -->
+<section class="support-sec">
+  <div class="inner">
+    <div class="sec-center">
+      <span class="badge">えらべるサポート</span>
+      <h2 class="sec-title">えらべるサポート</h2>
+      <div class="sec-rule"></div>
+    </div>
+    <div class="support-grid">
+      <div class="support-card">
+        <div class="support-img-wrap"><img src="50.png" alt="早朝・夜間対応" class="ri-c"></div>
+        <p class="support-name">早朝・夜間対応</p>
+        <p class="support-desc">通常時間(8:30〜17:30)以外の時間も<br>ご利用可能ですので(早朝7:00・深夜)<br>お気軽にご相談ください＊<br>＊料金は個別でお伝えします♪</p>
+      </div>
+      <div class="support-card">
+        <div class="support-img-wrap"><img src="42.png" alt="絵本リトミックあそび" class="ri-c"></div>
+        <p class="support-name">絵本リトミックあそび</p>
+        <p class="support-desc">ピアノや音楽に合わせて身体を動かしたり<br>リズムを感じる遊びを取り入れます♪<br>お子さまの"感じる力""聞く力"を<br>あそびの中で育みます＊</p>
+      </div>
+      <div class="support-card">
+        <div class="support-img-wrap"><img src="44.png" alt="感触あそび" class="ri-c"></div>
+        <p class="support-name">感触あそび</p>
+        <p class="support-desc">寒天・粘土などお家が汚れず<br>感触を楽しむ遊びを取り入れ<br>五感をたっぷり刺激します！<br>準備・片付けはおまかせ◎</p>
+      </div>
+      <div class="support-card">
+        <div class="support-img-wrap"><img src="35.png" alt="送迎サポート" class="ri-c"></div>
+        <p class="support-name">送迎サポート</p>
+        <p class="support-desc">保育園・幼稚園・習いごとへの<br>送迎のサポートが可能です。<br>徒歩・公共交通機関での移動など<br>安全を最優先に対応します。</p>
+      </div>
+      <div class="support-card">
+        <div class="support-img-wrap"><img src="43.png" alt="家事サポート" class="ri-c"></div>
+        <p class="support-name">家事サポート</p>
+        <p class="support-desc">お子さまのお世話の合間に<br>・食器洗い<br>・簡単な片付け　など<br>無理のない範囲での家事サポートが可能です</p>
+      </div>
+      <div class="support-card">
+        <div class="support-img-wrap"><img src="46.png" alt="ふれあいあそび" class="ri-c"></div>
+        <p class="support-name">ふれあいあそび</p>
+        <p class="support-desc">ベビーマッサージや絵本の読み聞かせなど<br>赤ちゃんとのふれあいを大切に<br>心とからだの発達をサポートします♪</p>
+      </div>
+    </div>
+    <div style="text-align:center; margin-top:40px;">
+      <a href="https://line.me/R/ti/p/@064ekqaq?oat_content=url&ts=02231659" target="_blank" rel="noopener" class="btn-sage">お問い合わせはこちら</a>
+    </div>
+  </div>
+</section>
+
+<!-- nicoricoの特徴 -->
+<section class="point-sec">
+  <div class="inner">
+    <div class="sec-center">
+      <span class="badge">nicoricoの特徴</span>
+      <h2 class="sec-title">nicoricoの特徴</h2>
+      <div class="sec-rule"></div>
+    </div>
+    <div class="point-list">
+      <div class="point-item">
+        <div class="point-badge-wrap">
+          <span class="point-badge">Point</span>
+          <span class="point-badge-num">01</span>
+        </div>
+        <div class="point-body">
+          <h3>面談はzoomも可能！</h3>
+          <p>お忙しいママさんのために面談は対面・zoomで選べます＊</p>
+        </div>
+      </div>
+      <div class="point-item">
+        <div class="point-badge-wrap">
+          <span class="point-badge">Point</span>
+          <span class="point-badge-num">02</span>
+        </div>
+        <div class="point-body">
+          <h3>シッター中のご様子の記録表をお渡し！</h3>
+          <p>お子さまがどんな様子だったのか安心して頂けるように<br>お写真入りでお渡しします。</p>
+        </div>
+      </div>
+      <div class="point-item">
+        <div class="point-badge-wrap">
+          <span class="point-badge">Point</span>
+          <span class="point-badge-num">03</span>
+        </div>
+        <div class="point-body">
+          <h3>教室での内容をマンツーマンで！</h3>
+          <p>時間が合わなくて習い事に通えない、でも何か習わせたい！<br>そんな方におすすめです♪<br>内容はどの都度、ご相談させていただきます＊</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ LINE CTA ══════════════ -->
+<section class="cta-sec">
+  <h2>お問い合わせはこちらから</h2>
+  <p>参加ご希望やご質問などございましたら<br>こちらからお問い合わせお願いします♪</p>
+  <div class="cta-btns">
+    <a href="https://line.me/R/ti/p/@075mpplb?ts=03251149&oat_content=url" target="_blank" rel="noopener" class="btn-line-cta">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+      公式LINEはこちら
+    </a>
+  </div>
+</section>
+
+<!-- ══════════════ FOOTER ══════════════ -->
+<footer>
+  <div>
+    <span class="f-logo">親子教室 nicorico</span>
+    <ul class="f-nav">
+      <li><a href="#hero">ホーム</a></li>
+      <li><a href="#mechakucha">めちゃくちゃあそび</a></li>
+      <li><a href="#babysitter">ベビーシッター</a></li>
+      <li><a href="https://ameblo.jp/sachimama18/" target="_blank" rel="noopener">Blog</a></li>
+      <li><a href="#access">アクセス</a></li>
+    </ul>
+    <div class="f-sns">
+      <a href="https://line.me/R/ti/p/@075mpplb?ts=03251149&oat_content=url" target="_blank" rel="noopener">Line</a>
+      <a href="https://www.instagram.com/baby_nicorico/" target="_blank" rel="noopener">Instagram</a>
+    </div>
+    <div class="f-legal">
+      <a href="#">プライバシーポリシー</a>
+      <a href="#">特定商取引法に基づく表記</a>
+    </div>
+    <p class="f-copy">© 2026 親子教室 nicorico</p>
+  </div>
+</footer>
+
+<!-- テーマ切り替えパネル -->
+<div id="theme-panel">
+  <p id="theme-label">カラーテーマ</p>
+  <div id="theme-swatches">
+    <button class="ts active" data-theme="pink"   style="background:#7A5C40" title="Wixオリジナル（クリーム×ブラウン）" onclick="applyTheme('pink')"></button>
+    <button class="ts"        data-theme="yellow" style="background:#C49020" title="黄色・マスタード系" onclick="applyTheme('yellow')"></button>
+    <button class="ts"        data-theme="brown"  style="background:#D95B9A" title="ピンク系" onclick="applyTheme('brown')"></button>
+    <button class="ts"        data-theme="blue"   style="background:#3FA8D0" title="水色系" onclick="applyTheme('blue')"></button>
+  </div>
+</div>
+
+<script>
+function toggleFaq(btn) {
+  btn.closest('.faq-item').classList.toggle('open');
+}
+function toggleMobNav() {
+  document.getElementById('mob-nav').classList.toggle('open');
+}
+function closeMobNav() {
+  document.getElementById('mob-nav').classList.remove('open');
+}
+
+const themes = {
+  pink: {
+    '--pink-pale':  '#FAF6EE',
+    '--pink-light': '#EFE6D4',
+    '--pink':       '#C8A882',
+    '--pink-mid':   '#A08060',
+    '--pink-dark':  '#7A5C40',
+    '--beige':      '#FBF8F2',
+    '--cream':      '#FEFCF8',
+    '--brown':      '#3E2C1E',
+    '--brown-mid':  '#6B5040',
+    '--brown-lt':   '#9A8070',
+  },
+  yellow: {
+    '--pink-pale':  '#FFF9E6',
+    '--pink-light': '#FFF0BC',
+    '--pink':       '#FBCC52',
+    '--pink-mid':   '#E8AA20',
+    '--pink-dark':  '#C49020',
+    '--beige':      '#FFFCF0',
+    '--cream':      '#FFFEF5',
+    '--brown':      '#3D2800',
+    '--brown-mid':  '#6B4C00',
+    '--brown-lt':   '#9A7820',
+  },
+  brown: {
+    '--pink-pale':  '#FEF0F5',
+    '--pink-light': '#FADADD',
+    '--pink':       '#F9A8C9',
+    '--pink-mid':   '#EF8AB8',
+    '--pink-dark':  '#D95B9A',
+    '--beige':      '#FFF8F2',
+    '--cream':      '#FFFAF7',
+    '--brown':      '#3D2828',
+    '--brown-mid':  '#6B4848',
+    '--brown-lt':   '#9A7070',
+  },
+  blue: {
+    '--pink-pale':  '#EFF7FF',
+    '--pink-light': '#C8E8FF',
+    '--pink':       '#7EC8E3',
+    '--pink-mid':   '#4EA8D2',
+    '--pink-dark':  '#3FA8D0',
+    '--beige':      '#F0F9FF',
+    '--cream':      '#F5FBFF',
+    '--brown':      '#1A3040',
+    '--brown-mid':  '#3A5870',
+    '--brown-lt':   '#6A8898',
+  }
+};
+
+function scrollGallery(dir) {
+  const track = document.getElementById('galleryTrack');
+  if (!track) return;
+  const itemWidth = 224; // 200px circle + 24px gap
+  track.scrollBy({ left: dir * itemWidth * 2, behavior: 'smooth' });
+}
+
+function applyTheme(name) {
+  const root = document.documentElement;
+  const t = themes[name];
+  for (const [prop, val] of Object.entries(t)) {
+    root.style.setProperty(prop, val);
+  }
+  document.querySelectorAll('.ts').forEach(b => b.classList.remove('active'));
+  document.querySelector(`[data-theme="${name}"]`).classList.add('active');
+}
+</script>
+</body>
+</html>
