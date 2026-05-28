@@ -573,6 +573,9 @@ nav ul li a:hover { color: var(--pink-dark); background: var(--pink-pale); }
   border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;
 }
 
+/* ── ページ切り替え ── */
+.pg { display: block; }
+
 /* ── サブページ区切り ── */
 .subpage-marker {
   background: var(--brown); padding: 18px 24px;
@@ -1518,7 +1521,7 @@ footer {
 <header>
   <div class="hdr">
     <!-- ロゴ（クマのマスコット付き） -->
-    <a href="#hero" class="logo-wrap">
+    <a href="#" onclick="showPage('home');return false;" class="logo-wrap">
       <svg class="logo-bear" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
         <!-- 耳 -->
         <circle cx="10" cy="10" r="7" fill="#C8A882"/>
@@ -1546,11 +1549,11 @@ footer {
     </a>
     <nav>
       <ul>
-        <li><a href="#hero">ホーム</a></li>
-        <li><a href="#mechakucha">めちゃくちゃあそび</a></li>
-        <li><a href="#babysitter">ベビーシッター</a></li>
+        <li><a href="#" onclick="showPage('home');return false;" data-page="home">ホーム</a></li>
+        <li><a href="#" onclick="showPage('mechakucha');return false;" data-page="mechakucha">めちゃくちゃあそび</a></li>
+        <li><a href="#" onclick="showPage('babysitter');return false;" data-page="babysitter">ベビーシッター</a></li>
         <li><a href="https://ameblo.jp/sachimama18/" target="_blank" rel="noopener">ブログ</a></li>
-        <li><a href="#access">アクセス</a></li>
+        <li><a href="#" onclick="goAccess();return false;">アクセス</a></li>
       </ul>
     </nav>
     <button class="hamburger" onclick="toggleMobNav()" aria-label="メニュー">
@@ -1575,13 +1578,16 @@ footer {
 <!-- モバイルメニュー -->
 <nav class="mob-nav" id="mob-nav">
   <ul>
-    <li><a href="#hero"        onclick="closeMobNav()">ホーム</a></li>
-    <li><a href="#mechakucha" onclick="closeMobNav()">めちゃくちゃあそび</a></li>
-    <li><a href="#babysitter" onclick="closeMobNav()">ベビーシッター</a></li>
+    <li><a href="#" onclick="showPage('home');return false;">ホーム</a></li>
+    <li><a href="#" onclick="showPage('mechakucha');return false;">めちゃくちゃあそび</a></li>
+    <li><a href="#" onclick="showPage('babysitter');return false;">ベビーシッター</a></li>
     <li><a href="https://ameblo.jp/sachimama18/" target="_blank" rel="noopener" onclick="closeMobNav()">ブログ</a></li>
-    <li><a href="#access"     onclick="closeMobNav()">アクセス</a></li>
+    <li><a href="#" onclick="goAccess();return false;">アクセス</a></li>
   </ul>
 </nav>
+
+<!-- ══ ホームページ ══ -->
+<div id="pg-home" class="pg">
 
 <!-- ══════════════ HERO ══════════════ -->
 <section class="hero" id="hero">
@@ -1714,7 +1720,7 @@ footer {
           </div>
           <h3 class="cbc-name">めちゃくちゃあそび<span class="cbc-name-sub">（単発レッスン）</span></h3>
           <p class="cbc-desc">絵の具・水・紙・そざいを使って思い切り楽しむ感触あそび。《だめのない世界》でお子さまの「やりたい！」を尊重します。</p>
-          <a href="#mechakucha" class="btn-detail-w">
+          <a href="#" onclick="showPage('mechakucha');return false;" class="btn-detail-w">
             詳しく見る
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
@@ -1734,7 +1740,7 @@ footer {
           </div>
           <h3 class="cbc-name">おうちほいく<span class="cbc-name-sub">（ベビーシッター）</span></h3>
           <p class="cbc-desc">ご自宅に訪問し、お子さまのペースに合わせてやさしく保育。ベビーマッサージやふれあいあそびで心とからだの発達をサポートします。</p>
-          <a href="#babysitter" class="btn-detail-w">
+          <a href="#" onclick="showPage('babysitter');return false;" class="btn-detail-w">
             詳しく見る
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
@@ -2003,10 +2009,13 @@ footer {
   </div>
 </section>
 
-<!-- ══════════════ めちゃくちゃあそび（詳細） ══════════════ -->
+</div><!-- /pg-home -->
+
+<!-- ══ めちゃくちゃあそびページ ══ -->
+<div id="pg-mechakucha" class="pg" style="display:none">
 <div class="subpage-marker">
   <span class="subpage-marker-line"></span>
-  <span class="subpage-marker-label">めちゃくちゃあそび 詳細</span>
+  <span class="subpage-marker-label">めちゃくちゃあそび</span>
   <span class="subpage-marker-line"></span>
 </div>
 <div id="mechakucha"></div>
@@ -2283,7 +2292,7 @@ footer {
         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
         公式LINEはこちら
       </a>
-      <a href="#babysitter" class="mecha-cta-home">
+      <a href="#" onclick="showPage('babysitter');return false;" class="mecha-cta-home">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         その他のサービスを見る
       </a>
@@ -2291,10 +2300,13 @@ footer {
   </div>
 </section>
 
-<!-- ══════════════ おうちほいく（ベビーシッター） ══════════════ -->
+</div><!-- /pg-mechakucha -->
+
+<!-- ══ ベビーシッターページ ══ -->
+<div id="pg-babysitter" class="pg" style="display:none">
 <div class="subpage-marker">
   <span class="subpage-marker-line"></span>
-  <span class="subpage-marker-label">ベビーシッター 詳細</span>
+  <span class="subpage-marker-label">ベビーシッター</span>
   <span class="subpage-marker-line"></span>
 </div>
 <div id="babysitter"></div>
@@ -2433,16 +2445,18 @@ footer {
   </div>
 </section>
 
+</div><!-- /pg-babysitter -->
+
 <!-- ══════════════ FOOTER ══════════════ -->
 <footer>
   <div>
     <span class="f-logo">親子教室 nicorico</span>
     <ul class="f-nav">
-      <li><a href="#hero">ホーム</a></li>
-      <li><a href="#mechakucha">めちゃくちゃあそび</a></li>
-      <li><a href="#babysitter">ベビーシッター</a></li>
+      <li><a href="#" onclick="showPage('home');return false;">ホーム</a></li>
+      <li><a href="#" onclick="showPage('mechakucha');return false;">めちゃくちゃあそび</a></li>
+      <li><a href="#" onclick="showPage('babysitter');return false;">ベビーシッター</a></li>
       <li><a href="https://ameblo.jp/sachimama18/" target="_blank" rel="noopener">Blog</a></li>
-      <li><a href="#access">アクセス</a></li>
+      <li><a href="#" onclick="goAccess();return false;">アクセス</a></li>
     </ul>
     <div class="f-sns">
       <a href="https://line.me/R/ti/p/@075mpplb?ts=03251149&oat_content=url" target="_blank" rel="noopener">Line</a>
@@ -2468,6 +2482,31 @@ footer {
 </div>
 
 <script>
+/* ─── ページ切り替え ─── */
+function showPage(name) {
+  document.querySelectorAll('.pg').forEach(p => { p.style.display = 'none'; });
+  document.getElementById('pg-' + name).style.display = 'block';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  closeMobNav();
+  // ナビアクティブ更新
+  document.querySelectorAll('header nav a[data-page]').forEach(a => a.classList.remove('nav-active'));
+  const act = document.querySelector('header nav a[data-page="' + name + '"]');
+  if (act) act.classList.add('nav-active');
+}
+function goAccess() {
+  showPage('home');
+  setTimeout(function() {
+    const el = document.getElementById('access');
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
+  }, 80);
+}
+/* ─── 初期表示（URLハッシュ対応） ─── */
+(function() {
+  const h = location.hash.replace('#', '');
+  if (h === 'mechakucha') { showPage('mechakucha'); }
+  else if (h === 'babysitter') { showPage('babysitter'); }
+})();
+
 function toggleFaq(btn) {
   btn.closest('.faq-item').classList.toggle('open');
 }
