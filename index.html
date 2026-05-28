@@ -544,6 +544,96 @@ nav ul li a:hover { color: var(--pink-dark); background: var(--pink-pale); }
 }
 .btn-detail-w:hover { background: rgba(255,255,255,0.22); border-color: white; }
 
+/* ── ホーム末尾サービスバナー ── */
+.svc-banners-sec {
+  padding: 0 24px 16px;
+}
+.svc-banner-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  max-width: 1060px;
+  margin: 0 auto;
+}
+.svc-banner {
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+  min-height: 180px;
+  display: flex;
+  align-items: flex-end;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.25s, box-shadow 0.25s;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.13);
+}
+.svc-banner:hover { transform: translateY(-4px); box-shadow: 0 12px 36px rgba(0,0,0,0.22); }
+.svc-banner-img { position: absolute; inset: 0; }
+.svc-banner-img img { width: 100%; height: 100%; object-fit: cover; }
+.svc-banner-ov {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(42,28,14,0.88) 0%, rgba(42,28,14,0.42) 55%, rgba(42,28,14,0.04) 100%);
+}
+.svc-banner-body {
+  position: relative; z-index: 1;
+  padding: 20px 24px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+.svc-banner-label { flex: 1; min-width: 0; }
+.svc-banner-sub {
+  font-size: 11px;
+  color: rgba(255,255,255,0.72);
+  display: block;
+  margin-bottom: 4px;
+  letter-spacing: 0.04em;
+}
+.svc-banner-title {
+  font-size: 19px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.25;
+  margin: 0;
+}
+.svc-banner-title-sm {
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.72);
+  display: block;
+  margin-top: 2px;
+}
+.svc-banner-btn {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  border: 2px solid rgba(255,255,255,0.65);
+  color: #fff;
+  border-radius: 30px;
+  padding: 10px 20px;
+  font-size: 13px;
+  font-weight: 700;
+  font-family: inherit;
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(4px);
+  white-space: nowrap;
+  transition: background 0.2s, border-color 0.2s;
+}
+.svc-banner:hover .svc-banner-btn {
+  background: rgba(255,255,255,0.25);
+  border-color: #fff;
+}
+@media (max-width: 640px) {
+  .svc-banners-sec { padding: 0 16px 12px; }
+  .svc-banner-grid { grid-template-columns: 1fr; gap: 12px; }
+  .svc-banner { min-height: 150px; }
+  .svc-banner-title { font-size: 17px; }
+  .svc-banner-btn { padding: 9px 16px; font-size: 12px; }
+}
+
 /* ── ホームエンドCTA ── */
 .home-end-sec {
   background: var(--pink-pale);
@@ -1992,6 +2082,49 @@ footer {
       </div>
 
     </div>
+  </div>
+</section>
+
+<!-- ══════════════ サービスバナー ══════════════ -->
+<section class="svc-banners-sec">
+  <div class="svc-banner-grid">
+
+    <!-- めちゃくちゃあそび -->
+    <a href="#" onclick="showPage('mechakucha');return false;" class="svc-banner">
+      <div class="svc-banner-img">
+        <img src="55.png" alt="めちゃくちゃあそび">
+      </div>
+      <div class="svc-banner-ov"></div>
+      <div class="svc-banner-body">
+        <div class="svc-banner-label">
+          <span class="svc-banner-sub">6ヶ月〜6歳向け ／ 単発レッスン</span>
+          <p class="svc-banner-title">めちゃくちゃあそび</p>
+        </div>
+        <span class="svc-banner-btn">
+          詳しく見る
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </span>
+      </div>
+    </a>
+
+    <!-- おうちほいく（ベビーシッター） -->
+    <a href="#" onclick="showPage('babysitter');return false;" class="svc-banner">
+      <div class="svc-banner-img">
+        <img src="46.png" alt="おうちほいく（ベビーシッター）">
+      </div>
+      <div class="svc-banner-ov"></div>
+      <div class="svc-banner-body">
+        <div class="svc-banner-label">
+          <span class="svc-banner-sub">0歳〜3歳向け ／ ベビーシッター</span>
+          <p class="svc-banner-title">おうちほいく</p>
+        </div>
+        <span class="svc-banner-btn">
+          詳しく見る
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </span>
+      </div>
+    </a>
+
   </div>
 </section>
 
