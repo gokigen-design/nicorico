@@ -544,6 +544,72 @@ nav ul li a:hover { color: var(--pink-dark); background: var(--pink-pale); }
 }
 .btn-detail-w:hover { background: rgba(255,255,255,0.22); border-color: white; }
 
+/* ── メインサービスフィーチャー ── */
+.main-svc-wrap { max-width: 860px; margin: 36px auto 0; }
+.main-svc-card {
+  border-radius: 24px;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 45% 55%;
+  box-shadow: 0 4px 28px rgba(0,0,0,0.12);
+  background: #fff;
+}
+.main-svc-photo { position: relative; min-height: 380px; }
+.main-svc-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.main-svc-body {
+  padding: 40px 36px;
+  display: flex; flex-direction: column; justify-content: center; gap: 16px;
+}
+.main-svc-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+.main-svc-tag-new {
+  background: var(--pink-dark); color: #fff;
+  font-size: 11px; font-weight: 700; padding: 3px 14px; border-radius: 12px;
+}
+.main-svc-tag-age {
+  background: var(--pink-pale); color: var(--brown);
+  font-size: 11px; font-weight: 700; padding: 3px 14px; border-radius: 12px;
+  border: 1px solid var(--pink-light);
+}
+.main-svc-title { font-size: 28px; font-weight: 700; color: var(--brown); line-height: 1.25; }
+.main-svc-title-sub { font-size: 14px; font-weight: 500; color: var(--brown-mid); display: block; margin-top: 4px; }
+.main-svc-desc { font-size: 14px; color: var(--brown-mid); line-height: 1.85; }
+.main-svc-points { display: flex; flex-direction: column; gap: 9px; }
+.main-svc-point {
+  display: flex; align-items: flex-start; gap: 9px;
+  font-size: 13px; color: var(--brown); line-height: 1.6;
+}
+.main-svc-point-dot {
+  width: 6px; height: 6px; background: var(--brown);
+  border-radius: 50%; margin-top: 6px; flex-shrink: 0;
+}
+.event-strip {
+  margin-top: 24px;
+  background: var(--pink-pale);
+  border: 1.5px solid var(--pink-light);
+  border-radius: 16px;
+  padding: 18px 28px;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 16px; flex-wrap: wrap;
+}
+.event-strip-text { font-size: 14px; color: var(--brown); font-weight: 600; line-height: 1.6; }
+.event-strip-text span { font-size: 12px; color: var(--brown-mid); font-weight: 500; display: block; margin-top: 2px; }
+.btn-event-strip {
+  display: inline-flex; align-items: center; gap: 7px;
+  background: var(--brown); color: #fff;
+  font-size: 13px; font-weight: 700; font-family: inherit;
+  padding: 11px 24px; border-radius: 50px;
+  text-decoration: none; white-space: nowrap;
+  transition: opacity 0.2s, transform 0.15s;
+}
+.btn-event-strip:hover { opacity: 0.85; transform: translateY(-1px); }
+@media (max-width: 680px) {
+  .main-svc-card { grid-template-columns: 1fr; }
+  .main-svc-photo { min-height: 240px; }
+  .main-svc-body { padding: 24px 22px; }
+  .main-svc-title { font-size: 22px; }
+  .event-strip { padding: 16px 18px; }
+}
+
 /* ── 今月のイベント ── */
 .event-sec {
   background: #fff;
@@ -1779,7 +1845,7 @@ footer {
   </div>
   <div class="hero-overlay"></div>
   <div class="hero-content">
-    <p class="hero-dec">みんなが主役の少人数レッスン</p>
+    <p class="hero-dec">ご自宅への訪問保育・親子イベントの親子教室</p>
     <h1 class="hero-h1">
       親子の〝今〟をたいせつに、<br>
       <span class="sub">ふれる・感じる・あそぶを通して</span><br>
@@ -1808,7 +1874,7 @@ footer {
       <span class="badge">私の想い</span>
       <p class="omoi-lead" style="margin-top:14px;">赤ちゃんと笑いあって、<br>こどもと夢中になって、<br>ママもほっとできる場所。</p>
       <div class="omoi-body" style="margin-top:18px;">
-        <p>nicorico（ニコリコ）は、ベビーマッサージやリトミック、そして"めちゃくちゃ遊び"などを通して、親子でたっぷりふれあいながら、心も体ものびのび育つ時間を大切にしています。</p>
+        <p>nicorico（ニコリコ）は、ご自宅へ訪問してお子さまと向き合う"おうちほいく"と、感触あそびなどの親子イベントを通して、親子でたっぷりふれあいながら、心も体ものびのび育つ時間を大切にしています。</p>
         <p>「ちょっと外に出たいな」「子どもと一緒に何かしたいな」<br>そんな気持ちがふっとわいた日に、気軽に来られる親子の居場所です。</p>
         <p>おうちではできない体験があったり、子どもの"好き"が見つかったり、ママ同士で「わかる〜！」って笑いあえたり。</p>
         <p>ここに来ると、なんだかちょっと心があたたかくなる。そんな教室でありたいと思っています。</p>
@@ -1879,55 +1945,51 @@ footer {
   </div>
 </section>
 
-<!-- ══════════════ コース紹介 ══════════════ -->
+<!-- ══════════════ メインサービス ══════════════ -->
 <section class="sec sec-bg-pink" id="courses">
   <div class="inner">
     <div class="sec-center">
-      <span class="badge">コース紹介</span>
-      <h2 class="sec-title">コース紹介</h2>
+      <span class="badge">メインサービス</span>
+      <h2 class="sec-title">おうちほいく</h2>
       <div class="sec-rule"></div>
     </div>
-    <p class="course-intro">ご自宅でのやさしい保育サポートを中心に、<br>感触あそびのイベントも定期開催しています</p>
 
-    <div class="course-bigcards">
+    <div class="main-svc-wrap">
 
-      <!-- おうちほいく（ベビーシッター）← 主力サービス・左に -->
-      <div class="course-bigcard">
-        <div class="course-bigcard-img">
-          <img src="46.png" alt="おうちほいく（ベビーシッター）" class="ri-c">
+      <!-- ベビーシッター フィーチャーカード -->
+      <div class="main-svc-card">
+        <div class="main-svc-photo">
+          <img src="46.png" alt="おうちほいく（ベビーシッター）">
         </div>
-        <div class="course-bigcard-overlay"></div>
-        <div class="course-bigcard-body">
-          <div class="cbc-badges">
-            <span class="cbc-new">NEW</span>
-            <span class="cbc-age">0歳〜3歳向け</span>
+        <div class="main-svc-body">
+          <div class="main-svc-tags">
+            <span class="main-svc-tag-new">NEW</span>
+            <span class="main-svc-tag-age">0歳〜3歳向け</span>
           </div>
-          <h3 class="cbc-name">おうちほいく<span class="cbc-name-sub">（ベビーシッター）</span></h3>
-          <p class="cbc-desc">ご自宅に訪問し、お子さまのペースに合わせてやさしく保育。ベビーマッサージやふれあいあそびで心とからだの発達をサポートします。</p>
-          <a href="#" onclick="showPage('babysitter');return false;" class="btn-detail-w">
+          <p class="main-svc-title">おうちほいく<span class="main-svc-title-sub">（ベビーシッター）</span></p>
+          <p class="main-svc-desc">ご自宅に訪問し、お子さまのペースに合わせてやさしく保育します。大好きなおうちで、安心してすごせる時間を大切にします。</p>
+          <div class="main-svc-points">
+            <div class="main-svc-point"><span class="main-svc-point-dot"></span>お子さまのペースに合わせた1対1の保育</div>
+            <div class="main-svc-point"><span class="main-svc-point-dot"></span>ベビーマッサージ・ふれあいあそびも対応</div>
+            <div class="main-svc-point"><span class="main-svc-point-dot"></span>移動の手間なし、おうちでリラックスして受けられます</div>
+          </div>
+          <a href="#" onclick="showPage('babysitter');return false;" class="btn-detail-w" style="background:rgba(122,92,64,0.15); border-color:rgba(122,92,64,0.5); color:var(--brown);">
             詳しく見る
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
         </div>
       </div>
 
-      <!-- めちゃくちゃあそび ← イベント枠・右に -->
-      <div class="course-bigcard">
-        <div class="course-bigcard-img">
-          <img src="55.png" alt="めちゃくちゃあそび" class="ri">
+      <!-- イベント告知ストリップ -->
+      <div class="event-strip">
+        <div class="event-strip-text">
+          ニコリコでは親子向けイベントも開催しています
+          <span>めちゃくちゃあそびなど、毎月楽しいイベントをご用意♪</span>
         </div>
-        <div class="course-bigcard-overlay"></div>
-        <div class="course-bigcard-body">
-          <div class="cbc-badges">
-            <span class="cbc-age">6ヶ月〜6歳向け</span>
-          </div>
-          <h3 class="cbc-name">めちゃくちゃあそび<span class="cbc-name-sub">（単発イベント）</span></h3>
-          <p class="cbc-desc">絵の具・水・紙・そざいを使って思い切り楽しむ感触あそび。《だめのない世界》でお子さまの「やりたい！」を尊重します。</p>
-          <a href="#" onclick="showPage('mechakucha');return false;" class="btn-detail-w">
-            詳しく見る
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
-        </div>
+        <a href="#" onclick="document.getElementById('event-anchor').scrollIntoView({behavior:'smooth'});return false;" class="btn-event-strip">
+          開催情報を見る
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
       </div>
 
     </div>
@@ -2135,7 +2197,7 @@ footer {
 </section>
 
 <!-- ══════════════ 今月のイベント ══════════════ -->
-<section class="event-sec">
+<section class="event-sec" id="event-anchor">
   <div class="inner">
     <div class="sec-center">
       <span class="badge">イベント情報</span>
