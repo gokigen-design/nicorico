@@ -544,6 +544,99 @@ nav ul li a:hover { color: var(--pink-dark); background: var(--pink-pale); }
 }
 .btn-detail-w:hover { background: rgba(255,255,255,0.22); border-color: white; }
 
+/* ── 今月のイベント ── */
+.event-sec {
+  background: #fff;
+  padding: 64px 24px;
+}
+.event-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  max-width: 1060px;
+  margin: 36px auto 0;
+}
+.event-card {
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1.5px solid var(--pink-light);
+  background: var(--cream);
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.22s, transform 0.22s;
+}
+.event-card:hover { box-shadow: 0 8px 28px rgba(0,0,0,0.1); transform: translateY(-3px); }
+.event-card-thumb {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: var(--pink-pale);
+}
+.event-card-thumb img { width: 100%; height: 100%; object-fit: cover; }
+.event-card-body { padding: 20px 22px 22px; flex: 1; display: flex; flex-direction: column; gap: 8px; }
+.event-tag {
+  display: inline-block;
+  background: var(--pink-dark);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 3px 12px;
+  border-radius: 10px;
+  align-self: flex-start;
+}
+.event-date {
+  font-size: 13px;
+  color: var(--brown-mid);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.event-name {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--brown);
+  line-height: 1.35;
+  margin: 2px 0;
+}
+.event-desc { font-size: 13px; color: var(--brown-mid); line-height: 1.85; flex: 1; }
+.event-card-footer {
+  padding: 0 22px 22px;
+}
+.btn-event {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 13px 20px;
+  border-radius: 50px;
+  background: var(--brown);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  font-family: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.15s;
+}
+.btn-event:hover { opacity: 0.85; transform: translateY(-1px); }
+.event-empty {
+  text-align: center;
+  padding: 48px 20px;
+  color: var(--brown-mid);
+  font-size: 14px;
+  line-height: 1.9;
+  background: var(--pink-pale);
+  border-radius: 16px;
+  border: 1.5px dashed var(--pink-light);
+}
+@media (max-width: 640px) {
+  .event-sec { padding: 48px 16px; }
+  .event-grid { grid-template-columns: 1fr; }
+}
+
 /* ── ホーム末尾サービスバナー ── */
 .svc-banners-sec {
   padding: 0 24px 16px;
@@ -1640,8 +1733,8 @@ footer {
     <nav>
       <ul>
         <li><a href="#" onclick="showPage('home');return false;" data-page="home">ホーム</a></li>
-        <li><a href="#" onclick="showPage('mechakucha');return false;" data-page="mechakucha">めちゃくちゃあそび</a></li>
         <li><a href="#" onclick="showPage('babysitter');return false;" data-page="babysitter">ベビーシッター</a></li>
+        <li><a href="#" onclick="showPage('mechakucha');return false;" data-page="mechakucha">めちゃくちゃあそび</a></li>
         <li><a href="https://ameblo.jp/sachimama18/" target="_blank" rel="noopener">ブログ</a></li>
         <li><a href="#" onclick="goAccess();return false;">アクセス</a></li>
       </ul>
@@ -1669,8 +1762,8 @@ footer {
 <nav class="mob-nav" id="mob-nav">
   <ul>
     <li><a href="#" onclick="showPage('home');return false;">ホーム</a></li>
-    <li><a href="#" onclick="showPage('mechakucha');return false;">めちゃくちゃあそび</a></li>
     <li><a href="#" onclick="showPage('babysitter');return false;">ベビーシッター</a></li>
+    <li><a href="#" onclick="showPage('mechakucha');return false;">めちゃくちゃあそび</a></li>
     <li><a href="https://ameblo.jp/sachimama18/" target="_blank" rel="noopener" onclick="closeMobNav()">ブログ</a></li>
     <li><a href="#" onclick="goAccess();return false;">アクセス</a></li>
   </ul>
@@ -1794,30 +1887,11 @@ footer {
       <h2 class="sec-title">コース紹介</h2>
       <div class="sec-rule"></div>
     </div>
-    <p class="course-intro">おうちでの保育サポートと、教室での感触あそびの<br>2つのサービスをご用意しています</p>
+    <p class="course-intro">ご自宅でのやさしい保育サポートを中心に、<br>感触あそびのイベントも定期開催しています</p>
 
     <div class="course-bigcards">
 
-      <!-- めちゃくちゃあそび -->
-      <div class="course-bigcard">
-        <div class="course-bigcard-img">
-          <img src="55.png" alt="めちゃくちゃあそび" class="ri">
-        </div>
-        <div class="course-bigcard-overlay"></div>
-        <div class="course-bigcard-body">
-          <div class="cbc-badges">
-            <span class="cbc-age">6ヶ月〜6歳向け</span>
-          </div>
-          <h3 class="cbc-name">めちゃくちゃあそび<span class="cbc-name-sub">（単発レッスン）</span></h3>
-          <p class="cbc-desc">絵の具・水・紙・そざいを使って思い切り楽しむ感触あそび。《だめのない世界》でお子さまの「やりたい！」を尊重します。</p>
-          <a href="#" onclick="showPage('mechakucha');return false;" class="btn-detail-w">
-            詳しく見る
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
-        </div>
-      </div>
-
-      <!-- おうちほいく（ベビーシッター） -->
+      <!-- おうちほいく（ベビーシッター）← 主力サービス・左に -->
       <div class="course-bigcard">
         <div class="course-bigcard-img">
           <img src="46.png" alt="おうちほいく（ベビーシッター）" class="ri-c">
@@ -1831,6 +1905,25 @@ footer {
           <h3 class="cbc-name">おうちほいく<span class="cbc-name-sub">（ベビーシッター）</span></h3>
           <p class="cbc-desc">ご自宅に訪問し、お子さまのペースに合わせてやさしく保育。ベビーマッサージやふれあいあそびで心とからだの発達をサポートします。</p>
           <a href="#" onclick="showPage('babysitter');return false;" class="btn-detail-w">
+            詳しく見る
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- めちゃくちゃあそび ← イベント枠・右に -->
+      <div class="course-bigcard">
+        <div class="course-bigcard-img">
+          <img src="55.png" alt="めちゃくちゃあそび" class="ri">
+        </div>
+        <div class="course-bigcard-overlay"></div>
+        <div class="course-bigcard-body">
+          <div class="cbc-badges">
+            <span class="cbc-age">6ヶ月〜6歳向け</span>
+          </div>
+          <h3 class="cbc-name">めちゃくちゃあそび<span class="cbc-name-sub">（単発イベント）</span></h3>
+          <p class="cbc-desc">絵の具・水・紙・そざいを使って思い切り楽しむ感触あそび。《だめのない世界》でお子さまの「やりたい！」を尊重します。</p>
+          <a href="#" onclick="showPage('mechakucha');return false;" class="btn-detail-w">
             詳しく見る
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
@@ -2041,6 +2134,46 @@ footer {
   </div>
 </section>
 
+<!-- ══════════════ 今月のイベント ══════════════ -->
+<section class="event-sec">
+  <div class="inner">
+    <div class="sec-center">
+      <span class="badge">イベント情報</span>
+      <h2 class="sec-title">今月のイベント</h2>
+      <div class="sec-rule"></div>
+      <p style="font-size:14px; color:var(--brown-mid); margin-top:8px; line-height:1.8;">感触あそびやベビーマッサージなど、毎月さまざまなイベントを開催しています</p>
+    </div>
+
+    <div class="event-grid">
+
+      <!-- イベントカード① めちゃくちゃあそび -->
+      <div class="event-card">
+        <div class="event-card-thumb">
+          <img src="55.png" alt="めちゃくちゃあそびイベント">
+        </div>
+        <div class="event-card-body">
+          <span class="event-tag">受付中</span>
+          <p class="event-date">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            2026年6月 ○日（○）10:00〜11:30
+          </p>
+          <p class="event-name">めちゃくちゃあそび</p>
+          <p class="event-desc">絵の具・水・紙・素材を使って思い切り楽しむ感触あそび。だめのない世界で、お子さまの「やりたい！」を思い切り発揮できる時間です。</p>
+        </div>
+        <div class="event-card-footer">
+          <a href="https://reserva.be/nicorico" target="_blank" rel="noopener" class="btn-event">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            日程・ご予約はこちら
+          </a>
+        </div>
+      </div>
+
+      <!-- ※ 次回イベントが決まったらここにカードを追加 -->
+
+    </div>
+  </div>
+</section>
+
 <!-- ══════════════ アクセス ══════════════ -->
 <section class="sec sec-bg-beige" id="access">
   <div class="inner-lg">
@@ -2089,25 +2222,7 @@ footer {
 <section class="svc-banners-sec">
   <div class="svc-banner-grid">
 
-    <!-- めちゃくちゃあそび -->
-    <a href="#" onclick="showPage('mechakucha');return false;" class="svc-banner">
-      <div class="svc-banner-img">
-        <img src="55.png" alt="めちゃくちゃあそび">
-      </div>
-      <div class="svc-banner-ov"></div>
-      <div class="svc-banner-body">
-        <div class="svc-banner-label">
-          <span class="svc-banner-sub">6ヶ月〜6歳向け ／ 単発レッスン</span>
-          <p class="svc-banner-title">めちゃくちゃあそび</p>
-        </div>
-        <span class="svc-banner-btn">
-          詳しく見る
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </span>
-      </div>
-    </a>
-
-    <!-- おうちほいく（ベビーシッター） -->
+    <!-- おうちほいく（ベビーシッター）← 主力・左 -->
     <a href="#" onclick="showPage('babysitter');return false;" class="svc-banner">
       <div class="svc-banner-img">
         <img src="46.png" alt="おうちほいく（ベビーシッター）">
@@ -2117,6 +2232,24 @@ footer {
         <div class="svc-banner-label">
           <span class="svc-banner-sub">0歳〜3歳向け ／ ベビーシッター</span>
           <p class="svc-banner-title">おうちほいく</p>
+        </div>
+        <span class="svc-banner-btn">
+          詳しく見る
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </span>
+      </div>
+    </a>
+
+    <!-- めちゃくちゃあそび ← イベント・右 -->
+    <a href="#" onclick="showPage('mechakucha');return false;" class="svc-banner">
+      <div class="svc-banner-img">
+        <img src="55.png" alt="めちゃくちゃあそび">
+      </div>
+      <div class="svc-banner-ov"></div>
+      <div class="svc-banner-body">
+        <div class="svc-banner-label">
+          <span class="svc-banner-sub">6ヶ月〜6歳向け ／ 単発イベント</span>
+          <p class="svc-banner-title">めちゃくちゃあそび</p>
         </div>
         <span class="svc-banner-btn">
           詳しく見る
@@ -2590,8 +2723,8 @@ footer {
     <span class="f-logo">親子教室 nicorico</span>
     <ul class="f-nav">
       <li><a href="#" onclick="showPage('home');return false;">ホーム</a></li>
-      <li><a href="#" onclick="showPage('mechakucha');return false;">めちゃくちゃあそび</a></li>
       <li><a href="#" onclick="showPage('babysitter');return false;">ベビーシッター</a></li>
+      <li><a href="#" onclick="showPage('mechakucha');return false;">めちゃくちゃあそび</a></li>
       <li><a href="https://ameblo.jp/sachimama18/" target="_blank" rel="noopener">Blog</a></li>
       <li><a href="#" onclick="goAccess();return false;">アクセス</a></li>
     </ul>
